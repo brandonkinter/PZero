@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.revature.exceptions.InvalidDepositException;
+import com.revature.exceptions.InvalidWithdrawalException;
+import com.revature.exceptions.NotEnoughFundsException;
 
 public class Customer extends User {
 	
@@ -46,11 +48,13 @@ public class Customer extends User {
 		System.out.println("6. Log Out.");
 	} // end displayOptionsMenu()
 	
-	
-	// deposit
 	public void optionTwo(Scanner scan) {
 		this.deposit(scan);
 	} // end optionTwo()
+	
+	public void optionThree(Scanner scan) {
+		this.withdraw(scan);
+	} // end optionThree()
 	
 	@Override
 	public String toString() {
@@ -76,7 +80,7 @@ public class Customer extends User {
 		while(!success) {
 			System.out.println("Which account would you like " + 
 							   "to deposit into?");
-			displayAccounts();
+			this.displayAccounts();
 			System.out.print("Enter account number: ");
 			try {
 				BankAccount b = accounts.get
@@ -90,7 +94,7 @@ public class Customer extends User {
 						b.deposit(amount);
 						success = true;
 					} catch (InvalidDepositException e) {
-						System.out.println("Invalid deposit! Try again.");
+						System.out.println("Invalid amount! Try again.");
 					} // end try-catch
 				} // end while
 			} catch (IndexOutOfBoundsException e) {
@@ -99,5 +103,37 @@ public class Customer extends User {
 		} // end while
 		
 	} // end deposit()
+	
+	private void withdraw(Scanner scan) {
+		boolean success = false;
+		
+		while(!success) {
+			System.out.println("Which account would you like " +
+					   "to withdraw from?");
+			this.displayAccounts();
+			System.out.print("Enter account number: ");
+			try {
+				BankAccount b = accounts.get
+									(accounts.indexOf
+											(BankAccount.retrieve
+													(scan.nextInt())));
+				while(!success) {
+					System.out.print("How much would you like to withdraw? ");
+					long amount = (long)(scan.nextDouble() * 100);
+					try {
+						b.withdraw(amount);
+						success = true;
+					} catch(InvalidWithdrawalException e) {
+						System.out.println("Invalid amount! Try again.");
+					} catch(NotEnoughFundsException e) {
+						System.out.println("Not enough funds! Try again.");
+					} // end try-catch
+				} // end while
+			} catch(IndexOutOfBoundsException e) {
+				System.out.println("Invalid account! Try again.");
+			} // end try-catch
+		} // end while
+		
+	} // end withdraw()
 	
 } // end Customer

@@ -49,6 +49,8 @@ public abstract class User {
 	
 	public abstract void optionTwo(Scanner scan);
 	
+	public abstract void optionThree(Scanner scan);
+	
 	@Override
 	public String toString() {
 		return "userID: " + this.userID + " | userRole: " + this.userRole;

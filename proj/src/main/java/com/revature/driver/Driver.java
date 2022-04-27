@@ -27,8 +27,8 @@ public class Driver {
 			case 2: // Customer--deposit, Employee/Admin--customer ops
 				user.optionTwo(scan);
 				break;
-			case 3:
-				// do user's option 3
+			case 3: // Customer--withdraw, Employee/Admin--account ops
+				user.optionThree(scan);
 				break;
 			case 4:
 				// do user's option 4

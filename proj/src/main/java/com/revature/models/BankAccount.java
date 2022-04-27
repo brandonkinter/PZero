@@ -5,6 +5,8 @@ import java.util.Objects;
 import com.revature.dao.AccountDAO;
 import com.revature.dao.DAO;
 import com.revature.exceptions.InvalidDepositException;
+import com.revature.exceptions.InvalidWithdrawalException;
+import com.revature.exceptions.NotEnoughFundsException;
 
 public class BankAccount {
 	private int acctNum;
@@ -49,6 +51,16 @@ public class BankAccount {
 		this.balance += amount;
 		accountDAO.update(this);
 	} // end deposit()
+	
+	public void withdraw(long amount) throws InvalidWithdrawalException,
+											 NotEnoughFundsException {
+		if(amount < 0)
+			throw new InvalidWithdrawalException();
+		else if(this.balance - amount < 0)
+			throw new NotEnoughFundsException();
+		this.balance -= amount;
+		accountDAO.update(this);
+	}
 	
 	@Override
 	public String toString() {
