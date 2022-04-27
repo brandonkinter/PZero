@@ -45,7 +45,9 @@ public abstract class User {
 		return userDAO.retrieve(userID);
 	}
 	
-	public abstract void displayOptionsMenu(Scanner scan);
+	public abstract void displayOptionsMenu();
+	
+	public abstract void optionTwo(Scanner scan);
 	
 	@Override
 	public String toString() {

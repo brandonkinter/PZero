@@ -1,7 +1,5 @@
 package com.revature.models;
 
-import java.util.Scanner;
-
 public class Admin extends Employee {
 	public Admin() {
 		super();
@@ -12,8 +10,13 @@ public class Admin extends Employee {
 		this.setRole("admin");
 	}
 	
-	public void displayOptionsMenu(Scanner scan) {
-		
+	public void displayOptionsMenu() {
+		System.out.println("1. Approve or deny applications.");
+		System.out.println("2. Customer operations.");
+		System.out.println("3. Account operations.");
+		System.out.println("4. Employee operations.");
+		System.out.println("5. Settings.");
+		System.out.println("6. Log Out.");
 	}
 	
 	@Override

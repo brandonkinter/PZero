@@ -17,11 +17,34 @@ public class Driver {
 		
 		User user = introMenu(scan);
 		
-		System.out.println(user);
+		user.displayOptionsMenu();
+		System.out.print("What would you like to do? ");
+		
+		switch(scan.nextInt()) {
+			case 1:
+				// do user's option 1
+				break;
+			case 2: // Customer--deposit, Employee/Admin--customer ops
+				user.optionTwo(scan);
+				break;
+			case 3:
+				// do user's option 3
+				break;
+			case 4:
+				// do user's option 4
+				break;
+			case 5: // settings option across all User subclasses
+				// settings
+				break;
+			case 6: // logout option across all User subclasses
+				System.out.println("Thank you! We'll see you soon!");
+				break;
+			default:
+				System.out.println("Invalid option! Try again.\n");
+		}
 		
 		scan.close();
 	} // end main()
-	
 	private static User introMenu(Scanner scan) {
 		int choice = 0;
 		User user = null;
@@ -49,7 +72,7 @@ public class Driver {
 									   "We'll see you soon!");
 					break;
 				default:
-					System.out.println("Not a valid option! Try again.\n");
+					System.out.println("Invalid option! Try again.\n");
 			} // end switch
 			
 		} // end while
@@ -74,7 +97,8 @@ public class Driver {
 				success = true;
 			} catch(InvalidLoginException e) {
 				System.out.println("Invalid login! Try again.\n");
-			}
+			} // end try-catch
+			
 		} // end while
 		
 		return user;

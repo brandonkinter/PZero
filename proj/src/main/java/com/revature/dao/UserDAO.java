@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.revature.models.BankAccount;
 import com.revature.models.Admin;
 import com.revature.models.Customer;
 import com.revature.models.Employee;
@@ -45,7 +47,7 @@ public class UserDAO implements DAO<User, Integer, Void>{
 				String role = rs.getString(2);
 				switch(role) {
 					case "customer":
-						return new Customer(userID);
+						return new Customer(userID, getAccounts(userID));
 					case "employee":
 						return new Employee(userID);
 					case "admin":
@@ -94,5 +96,33 @@ public class UserDAO implements DAO<User, Integer, Void>{
 		} // end try-catch 
 		
 	} // end delete()
+	
+	private ArrayList<BankAccount> getAccounts(int userID) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT accounts.acct_num, accounts.balance " +
+						     "FROM accounts " +
+						     "INNER JOIN junctions " +
+						     "USING(acct_num) " +
+						     "WHERE junctions.user_id = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, userID);
+			ResultSet rs = st.executeQuery();
+			
+			ArrayList<BankAccount> result = new ArrayList<BankAccount>();
+			
+			while(rs.next()) {
+				result.add(new BankAccount(rs.getInt(1), rs.getLong(2)));
+			} // end while 
+			
+			return result;
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // end try-catch
+		
+		return null;
+	} // end getAccounts()
 	
 } // end UserDAO
