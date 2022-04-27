@@ -11,7 +11,7 @@ public class Login {
 	private String username;
 	private String password;
 	private int userID;
-	private LoginDAO loginDAO = new LoginDAO();
+	private static LoginDAO loginDAO = new LoginDAO();
 	
 	public Login() {
 		this.username = "";
@@ -69,6 +69,9 @@ public class Login {
 		return loginDAO.create(this);
 	}
 	
+	public void update() {
+		loginDAO.update(this);
+	}
 	// return corresponding userID if valid
 	// else throws exception
 	public int validate() throws InvalidLoginException {
@@ -79,6 +82,14 @@ public class Login {
 		
 		return userID;
 	} // end validate()
+	
+	public static Login retrieve(int userID) {
+		return loginDAO.retrieve(userID);
+	} // end retrieve()
+	
+	public static Login retrieve(String username) {
+		return loginDAO.retrieve(username);
+	} // end retrieve()
 	
 	// utility method
 	// checks usernames for proper format and for uniqueness

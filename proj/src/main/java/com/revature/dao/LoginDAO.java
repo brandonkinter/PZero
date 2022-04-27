@@ -54,6 +54,28 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 		return null;
 	} // end retrieve()
 	
+	public Login retrieve(int userID) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT * " +
+							 "FROM logins " +
+							 "WHERE user_id = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, userID);
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+				return new Login(rs.getString(1), rs.getString(2), userID);
+			} // end if
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} // end try-catch
+		
+		return null;
+	} // end retrieve()
+	
 	// updates password field
 	public void update(Login login) {
 		Connection c = ConnectionManager.getConnection();

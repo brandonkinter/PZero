@@ -44,7 +44,7 @@ public class Customer extends User {
 		System.out.println("2. Deposit to an account.");
 		System.out.println("3. Withdraw from an account.");
 		System.out.println("4. Transfer between accounts.");
-		System.out.println("5. Settings.");
+		System.out.println("5. User profile.");
 		System.out.println("6. Log Out.");
 	} // end displayOptionsMenu()
 	

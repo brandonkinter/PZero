@@ -33,8 +33,8 @@ public class Driver {
 			case 4:
 				// do user's option 4
 				break;
-			case 5: // settings option across all User subclasses
-				// settings
+			case 5: // user profile
+				user.userProfile(scan);
 				break;
 			case 6: // logout option across all User subclasses
 				System.out.println("Thank you! We'll see you soon!");

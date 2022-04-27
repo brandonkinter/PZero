@@ -15,7 +15,7 @@ public class Admin extends Employee {
 		System.out.println("2. Customer operations.");
 		System.out.println("3. Account operations.");
 		System.out.println("4. Employee operations.");
-		System.out.println("5. Settings.");
+		System.out.println("5. User profile.");
 		System.out.println("6. Log Out.");
 	}
 	
