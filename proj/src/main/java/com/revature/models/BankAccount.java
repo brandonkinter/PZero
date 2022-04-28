@@ -4,8 +4,8 @@ import java.util.Objects;
 
 import com.revature.dao.AccountDAO;
 import com.revature.dao.DAO;
-import com.revature.exceptions.InvalidDepositException;
-import com.revature.exceptions.InvalidWithdrawalException;
+import com.revature.exceptions.AccountNotFoundException;
+import com.revature.exceptions.InvalidAmountException;
 import com.revature.exceptions.NotEnoughFundsException;
 
 public class BankAccount {
@@ -40,26 +40,40 @@ public class BankAccount {
 		this.balance = balance;
 	}
 	
-	public static BankAccount retrieve(int acctNum) {
-		return accountDAO.retrieve(acctNum);
+	public static BankAccount retrieve(int acctNum) 
+									throws AccountNotFoundException {
+		BankAccount account = accountDAO.retrieve(acctNum);
+		
+		if(account == null)
+			throw new AccountNotFoundException();
+		
+		return account;
 	}
 	
-	public void deposit(long amount) throws InvalidDepositException {
+	public void deposit(long amount) throws InvalidAmountException {
 		if(amount <= 0)
-			throw new InvalidDepositException();
+			throw new InvalidAmountException();
 		
 		this.balance += amount;
 		accountDAO.update(this);
 	} // end deposit()
 	
-	public void withdraw(long amount) throws InvalidWithdrawalException,
+	public void withdraw(long amount) throws InvalidAmountException,
 											 NotEnoughFundsException {
 		if(amount < 0)
-			throw new InvalidWithdrawalException();
+			throw new InvalidAmountException();
 		else if(this.balance - amount < 0)
 			throw new NotEnoughFundsException();
+		
 		this.balance -= amount;
 		accountDAO.update(this);
+	}
+	
+	public void transfer(long amount, BankAccount dest) 
+											throws InvalidAmountException, 
+												   NotEnoughFundsException {
+		this.withdraw(amount);
+		dest.deposit(amount);
 	}
 	
 	@Override

@@ -3,8 +3,8 @@ package com.revature.models;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.revature.exceptions.InvalidDepositException;
-import com.revature.exceptions.InvalidWithdrawalException;
+import com.revature.exceptions.AccountNotFoundException;
+import com.revature.exceptions.InvalidAmountException;
 import com.revature.exceptions.NotEnoughFundsException;
 
 public class Customer extends User {
@@ -56,6 +56,10 @@ public class Customer extends User {
 		this.withdraw(scan);
 	} // end optionThree()
 	
+	public void optionFour(Scanner scan) {
+		this.transfer(scan);
+	}
+	
 	@Override
 	public String toString() {
 		return "I am a customer.\n" + accounts;
@@ -83,21 +87,21 @@ public class Customer extends User {
 			this.displayAccounts();
 			System.out.print("Enter account number: ");
 			try {
-				BankAccount b = accounts.get
-									(accounts.indexOf
-											(BankAccount.retrieve
-													(scan.nextInt())));
+				BankAccount b = accounts.get(
+									accounts.indexOf(
+											BankAccount.retrieve(
+													scan.nextInt())));
 				while(!success) {
 					System.out.print("How much would you like to deposit? ");
 					long amount = (long)(scan.nextDouble() * 100);
 					try {
 						b.deposit(amount);
 						success = true;
-					} catch (InvalidDepositException e) {
+					} catch (InvalidAmountException e) {
 						System.out.println("Invalid amount! Try again.");
 					} // end try-catch
 				} // end while
-			} catch (IndexOutOfBoundsException e) {
+			} catch (Exception e) {
 				System.out.println("Invalid account! Try again.");
 			} // end try-catch
 		} // end while
@@ -109,31 +113,74 @@ public class Customer extends User {
 		
 		while(!success) {
 			System.out.println("Which account would you like " +
-					   "to withdraw from?");
+					   		   "to withdraw from?");
 			this.displayAccounts();
 			System.out.print("Enter account number: ");
 			try {
-				BankAccount b = accounts.get
-									(accounts.indexOf
-											(BankAccount.retrieve
-													(scan.nextInt())));
+				BankAccount b = accounts.get(
+									accounts.indexOf(
+											BankAccount.retrieve(
+													scan.nextInt())));
 				while(!success) {
 					System.out.print("How much would you like to withdraw? ");
 					long amount = (long)(scan.nextDouble() * 100);
 					try {
 						b.withdraw(amount);
 						success = true;
-					} catch(InvalidWithdrawalException e) {
+					} catch(InvalidAmountException e) {
 						System.out.println("Invalid amount! Try again.");
 					} catch(NotEnoughFundsException e) {
 						System.out.println("Not enough funds! Try again.");
 					} // end try-catch
 				} // end while
-			} catch(IndexOutOfBoundsException e) {
+			} catch(Exception e) {
 				System.out.println("Invalid account! Try again.");
 			} // end try-catch
 		} // end while
 		
 	} // end withdraw()
+	
+	private void transfer(Scanner scan) {
+		boolean success = false;
+			
+		while(!success) {
+			System.out.println("Which account would you " + 
+							   "like to transfer from?");
+			this.displayAccounts();
+			System.out.print("Enter account number: ");
+			try {
+				BankAccount b = accounts.get(
+									accounts.indexOf(
+											BankAccount.retrieve(
+													scan.nextInt())));
+				while(!success) {
+					System.out.print("Enter destination account number: ");
+					try {
+						BankAccount dest 
+									  = BankAccount.retrieve(scan.nextInt());
+						while(!success) {
+							System.out.print("How much would you " +
+								     		 "like to transfer? ");
+							long amount = (long)(scan.nextDouble() * 100);
+							try {
+								b.transfer(amount, dest);
+								success = true;
+							} catch(InvalidAmountException e) {
+								System.out.println("Invalid amount! " + 
+												   "Try again.");
+							} catch(NotEnoughFundsException e) {
+								System.out.println("Not enough funds! " + 
+												   "Try again.");
+							}
+						}
+					} catch(AccountNotFoundException e) {
+						System.out.println("Invalid account! Try again. ");
+					}
+				}
+			} catch(Exception e) {
+				System.out.println("Invalid account! Try again. ");
+			}
+		} // end while
+	} // end transfer()
 	
 } // end Customer

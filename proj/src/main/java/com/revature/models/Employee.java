@@ -29,6 +29,10 @@ public class Employee extends User {
 		
 	}
 	
+	public void optionFour(Scanner scan) {
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "I am an employee.";

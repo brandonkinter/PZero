@@ -24,19 +24,19 @@ public class Driver {
 			case 1:
 				// do user's option 1
 				break;
-			case 2: // Customer--deposit, Employee/Admin--customer ops
+			case 2: // Cust--deposit, Empl/Admin--customer ops
 				user.optionTwo(scan);
 				break;
-			case 3: // Customer--withdraw, Employee/Admin--account ops
+			case 3: // Cust--withdraw, Empl/Admin--account ops
 				user.optionThree(scan);
 				break;
-			case 4:
-				// do user's option 4
+			case 4: // Cust--transfer, Empl--customer recs, Admin--employee ops
+				user.optionFour(scan);
 				break;
 			case 5: // user profile
 				user.userProfile(scan);
 				break;
-			case 6: // logout option across all User subclasses
+			case 6: // logout
 				System.out.println("Thank you! We'll see you soon!");
 				break;
 			default:
@@ -45,6 +45,7 @@ public class Driver {
 		
 		scan.close();
 	} // end main()
+	
 	private static User introMenu(Scanner scan) {
 		int choice = 0;
 		User user = null;
