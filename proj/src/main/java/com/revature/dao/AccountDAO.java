@@ -7,17 +7,22 @@ import java.sql.SQLException;
 
 import com.revature.models.BankAccount;
 
-public class AccountDAO implements DAO<BankAccount, Integer, Void> {
+public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 	
-	public Void create(BankAccount account) {
+	public Integer create(BankAccount account) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
 			String command = "INSERT INTO accounts (balance) " +
-						     "VALUES (?);";
+						     "VALUES (?) " +
+						     "RETURNING acct_num;";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setLong(1, account.getBalance());
-			st.execute();
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
 			
 		} catch(SQLException e) {
 			e.printStackTrace();

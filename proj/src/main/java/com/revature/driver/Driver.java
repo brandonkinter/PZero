@@ -12,17 +12,16 @@ import com.revature.models.User;
 
 public class Driver {
    
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		Scanner scan = new Scanner(System.in);
-		
+		boolean choice = true;
 		User user = introMenu(scan);
-		
-		user.displayOptionsMenu();
-		System.out.print("What would you like to do? ");
-		
+		while(choice) {
+			user.displayOptionsMenu();
+			System.out.print("What would you like to do? ");
 		switch(scan.nextInt()) {
-			case 1:
-				// do user's option 1
+			case 1: // Cust--apply, Empl/Admin--approve/deny
+				user.optionOne(scan);
 				break;
 			case 2: // Cust--deposit, Empl/Admin--customer ops
 				user.optionTwo(scan);
@@ -38,15 +37,16 @@ public class Driver {
 				break;
 			case 6: // logout
 				System.out.println("Thank you! We'll see you soon!");
+				choice = false;
 				break;
 			default:
 				System.out.println("Invalid option! Try again.\n");
 		}
-		
+		}
 		scan.close();
 	} // end main()
 	
-	private static User introMenu(Scanner scan) {
+	private static User introMenu(Scanner scan) throws InterruptedException {
 		int choice = 0;
 		User user = null;
 		
@@ -148,6 +148,5 @@ public class Driver {
 		} // end while
 		
 	} // end signup()
-	
 	
 } // end Driver

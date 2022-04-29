@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.revature.models.Junction;
+import com.revature.models.AccountJunction;
 
-public class JunctionDAO implements DAO<Junction, Integer, Void> {
+public class AccountJunctionDAO implements DAO<AccountJunction, Integer, Void> {
 	
-	public Void create(Junction junction) {
+	public Void create(AccountJunction junction) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "INSERT INTO junctions (user_id, acct_num)" +
+			String command = "INSERT INTO acct_junctions (user_id, acct_num)" +
 							 "VALUES (?, ?);";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, junction.getUserID());
@@ -27,19 +27,19 @@ public class JunctionDAO implements DAO<Junction, Integer, Void> {
 		return null;
 	} // end create()
 	
-	public Junction retrieve(Integer junctionID) {
+	public AccountJunction retrieve(Integer junctionID) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
 			String command = "SELECT * " +
-						     "FROM junctions " +
+						     "FROM acct_junctions " +
 						     "WHERE junction_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, junctionID);
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
-				return new Junction(junctionID, rs.getInt(2), rs.getInt(3));
+				return new AccountJunction(junctionID, rs.getInt(2), rs.getInt(3));
 			}// end if
 			
 		} catch(SQLException e) {
@@ -49,11 +49,11 @@ public class JunctionDAO implements DAO<Junction, Integer, Void> {
 		return null;
 	} // end retrieve()
 	
-	public void update(Junction junction) {
+	public void update(AccountJunction junction) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "UPDATE junctions " +
+			String command = "UPDATE acct_junctions " +
 							 "SET user_id = ?, acct_num = ?" +
 							 "WHERE junction_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
@@ -68,11 +68,11 @@ public class JunctionDAO implements DAO<Junction, Integer, Void> {
 		
 	} // end update()
 	
-	public void delete(Junction junction) {
+	public void delete(AccountJunction junction) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "DELETE FROM junctions " +
+			String command = "DELETE FROM acct_junctions " +
 						     "WHERE junction_id = ?";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, junction.getJunctionID());

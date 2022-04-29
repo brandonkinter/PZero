@@ -48,6 +48,10 @@ public class Customer extends User {
 		System.out.println("6. Log Out.");
 	} // end displayOptionsMenu()
 	
+	public void optionOne(Scanner scan) {
+		this.apply(scan);
+	} // end optionOne()
+	
 	public void optionTwo(Scanner scan) {
 		this.deposit(scan);
 	} // end optionTwo()
@@ -58,7 +62,7 @@ public class Customer extends User {
 	
 	public void optionFour(Scanner scan) {
 		this.transfer(scan);
-	}
+	} // end optionFour()
 	
 	@Override
 	public String toString() {
@@ -76,6 +80,34 @@ public class Customer extends User {
 							("        " + i.getAcctNum() + "            $" +
 							 String.format("%.2f", i.getBalance()/100.0));
 		} // end if-else
+	}
+	
+	private void apply(Scanner scan) {
+		Application app = new Application();
+		boolean success = false;
+		System.out.println("-----ACCOUNT APPLICATION-----\n");
+		
+		while(!success) {
+			System.out.print("What is your annual income? ");
+			try {
+				app.setIncome((long)(scan.nextDouble() * 100));
+				while(!success) {
+					System.out.print("What would you like your " +
+									 "initial deposit to be (Minimum $100)? ");
+					try {
+						app.setDeposit((long)(scan.nextDouble() * 100));
+						app.create(this.getID());
+						success = true;
+					} catch(InvalidAmountException e) {
+						System.out.println("Invalid deposit! Try again. \n");
+					}
+				}
+			} catch(InvalidAmountException e) {
+				System.out.println("Invalid amount! Try again. \n");
+			}
+		}
+		System.out.println("\n\nThank you for submitting an application!");
+		System.out.println("It will be reviewed shortly.");
 	}
 	
 	private void deposit(Scanner scan) {

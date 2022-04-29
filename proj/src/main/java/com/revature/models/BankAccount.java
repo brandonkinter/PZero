@@ -3,6 +3,7 @@ package com.revature.models;
 import java.util.Objects;
 
 import com.revature.dao.AccountDAO;
+import com.revature.dao.AccountJunctionDAO;
 import com.revature.dao.DAO;
 import com.revature.exceptions.AccountNotFoundException;
 import com.revature.exceptions.InvalidAmountException;
@@ -11,12 +12,19 @@ import com.revature.exceptions.NotEnoughFundsException;
 public class BankAccount {
 	private int acctNum;
 	private long balance;
-	private static DAO<BankAccount, Integer, Void> accountDAO 
+	private static DAO<BankAccount, Integer, Integer> acctDAO 
 													= new AccountDAO();
+	private static DAO<AccountJunction, Integer, Void> acctJuncDAO
+													= new AccountJunctionDAO();
 	
 	public BankAccount() {
 		this.acctNum = -1;
 		this.balance = 0;
+	}
+	
+	public BankAccount(long balance) {
+		this.acctNum = -1;
+		this.balance = balance;
 	}
 	
 	public BankAccount(int acctNum, long balance) {
@@ -40,9 +48,13 @@ public class BankAccount {
 		this.balance = balance;
 	}
 	
+	public void create(int userID) {
+		acctJuncDAO.create(new AccountJunction(userID, acctDAO.create(this)));
+	}
+	
 	public static BankAccount retrieve(int acctNum) 
 									throws AccountNotFoundException {
-		BankAccount account = accountDAO.retrieve(acctNum);
+		BankAccount account = acctDAO.retrieve(acctNum);
 		
 		if(account == null)
 			throw new AccountNotFoundException();
@@ -55,7 +67,7 @@ public class BankAccount {
 			throw new InvalidAmountException();
 		
 		this.balance += amount;
-		accountDAO.update(this);
+		acctDAO.update(this);
 	} // end deposit()
 	
 	public void withdraw(long amount) throws InvalidAmountException,
@@ -66,7 +78,7 @@ public class BankAccount {
 			throw new NotEnoughFundsException();
 		
 		this.balance -= amount;
-		accountDAO.update(this);
+		acctDAO.update(this);
 	}
 	
 	public void transfer(long amount, BankAccount dest) 

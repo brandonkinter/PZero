@@ -72,6 +72,8 @@ public abstract class User {
 	
 	public abstract void displayOptionsMenu();
 	
+	public abstract void optionOne(Scanner scan);
+	
 	public abstract void optionTwo(Scanner scan);
 	
 	public abstract void optionThree(Scanner scan);

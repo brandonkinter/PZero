@@ -1,21 +1,21 @@
 package com.revature.models;
 
-public class Junction {
+public class AccountJunction {
 	private int junctionID;
 	private int userID;
 	private int acctNum;
 	
-	public Junction() {
+	public AccountJunction() {
 		this.junctionID = this.userID = this.acctNum = -1;
 	}
 	
-	public Junction(int userID, int acctNum) {
+	public AccountJunction(int userID, int acctNum) {
 		this.junctionID = -1;
 		this.userID = userID;
 		this.acctNum = acctNum;
 	}
 	
-	public Junction(int junctionID, int userID, int acctNum) {
+	public AccountJunction(int junctionID, int userID, int acctNum) {
 		this.junctionID = junctionID;
 		this.userID = userID;
 		this.acctNum = acctNum;

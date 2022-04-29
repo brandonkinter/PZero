@@ -103,9 +103,9 @@ public class UserDAO implements DAO<User, Integer, Void>{
 		try {
 			String command = "SELECT accounts.acct_num, accounts.balance " +
 						     "FROM accounts " +
-						     "INNER JOIN junctions " +
+						     "INNER JOIN acct_junctions " +
 						     "USING(acct_num) " +
-						     "WHERE junctions.user_id = ?;";
+						     "WHERE acct_junctions.user_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, userID);
 			ResultSet rs = st.executeQuery();
