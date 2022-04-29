@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.revature.models.AccountJunction;
 
@@ -48,6 +49,31 @@ public class AccountJunctionDAO implements DAO<AccountJunction, Integer, Void> {
 		
 		return null;
 	} // end retrieve()
+	
+	public ArrayList<AccountJunction> retrieveByAcct(Integer acctNum) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT * " +
+							 "FROM acct_junctions " +
+							 "WHERE acct_num = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, acctNum);
+			ResultSet rs = st.executeQuery();
+			
+			ArrayList<AccountJunction> juncs 
+								= new ArrayList<AccountJunction>();
+			
+			while(rs.next()) {
+				juncs.add(new AccountJunction(rs.getInt(1), 
+											  rs.getInt(2), acctNum));
+			}
+			return juncs;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public void update(AccountJunction junction) {
 		Connection c = ConnectionManager.getConnection();

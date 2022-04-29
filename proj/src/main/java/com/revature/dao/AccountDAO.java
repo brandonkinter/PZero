@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+//import java.util.ArrayList;
 
 import com.revature.models.BankAccount;
 
@@ -52,6 +53,32 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 		
 		return null;
 	} // end retrieve()
+	
+	/*public ArrayList<BankAccount> retrieveByCust(Integer userID) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT * " +
+							 "FROM accounts " +
+							 "INNER JOIN acct_junctions " +
+							 "USING (acct_num) " +
+							 "WHERE user_id = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, userID);
+			ResultSet rs = st.executeQuery();
+			
+			ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
+			
+			while(rs.next()) {
+				accounts.add(new BankAccount(rs.getInt(1), rs.getLong(3)));
+			}
+			
+			return accounts;
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}*/
 	
 	public void update(BankAccount account) {
 		Connection c = ConnectionManager.getConnection();

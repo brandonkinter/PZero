@@ -3,7 +3,7 @@ package com.revature.models;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.revature.exceptions.AccountNotFoundException;
+import com.revature.exceptions.NotFoundException;
 import com.revature.exceptions.InvalidAmountException;
 import com.revature.exceptions.NotEnoughFundsException;
 
@@ -36,6 +36,15 @@ public class Customer extends User {
 		userDAO.create(this);
 	}
 	
+	public static Customer retrieve(int userID) throws NotFoundException {
+		User cust = userDAO.retrieve(userID);
+		
+		if(!(cust instanceof Customer)) 
+			throw new NotFoundException();
+		
+		return (Customer)cust;
+	}
+	
 	public void displayOptionsMenu() {
 		displayAccounts();
 		
@@ -66,7 +75,8 @@ public class Customer extends User {
 	
 	@Override
 	public String toString() {
-		return "I am a customer.\n" + accounts;
+		return "User ID: " + this.getID() +
+			   "\n\nAccounts: "+ accounts;
 	}
 	
 	private void displayAccounts() {
@@ -205,7 +215,7 @@ public class Customer extends User {
 												   "Try again.");
 							}
 						}
-					} catch(AccountNotFoundException e) {
+					} catch(NotFoundException e) {
 						System.out.println("Invalid account! Try again. ");
 					}
 				}

@@ -1,21 +1,19 @@
 package com.revature.models;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountJunctionDAO;
-import com.revature.dao.DAO;
-import com.revature.exceptions.AccountNotFoundException;
+import com.revature.exceptions.NotFoundException;
 import com.revature.exceptions.InvalidAmountException;
 import com.revature.exceptions.NotEnoughFundsException;
 
 public class BankAccount {
 	private int acctNum;
 	private long balance;
-	private static DAO<BankAccount, Integer, Integer> acctDAO 
-													= new AccountDAO();
-	private static DAO<AccountJunction, Integer, Void> acctJuncDAO
-													= new AccountJunctionDAO();
+	private static AccountDAO acctDAO = new AccountDAO();
+	private static AccountJunctionDAO acctJuncDAO = new AccountJunctionDAO();
 	
 	public BankAccount() {
 		this.acctNum = -1;
@@ -53,15 +51,30 @@ public class BankAccount {
 	}
 	
 	public static BankAccount retrieve(int acctNum) 
-									throws AccountNotFoundException {
+									throws NotFoundException {
 		BankAccount account = acctDAO.retrieve(acctNum);
 		
 		if(account == null)
-			throw new AccountNotFoundException();
+			throw new NotFoundException();
 		
 		return account;
 	}
 	
+	public static ArrayList<Integer> retrieveCusts(int acctNum) 
+												throws NotFoundException {
+		ArrayList<Integer> custs = new ArrayList<Integer>();
+		ArrayList<AccountJunction> juncs = acctJuncDAO.retrieveByAcct(acctNum);
+		
+		if(juncs == null) {
+			throw new NotFoundException();
+		}
+		
+		for(AccountJunction i : juncs) {
+			custs.add(i.getUserID());
+		}
+		
+		return custs;
+	}
 	public void deposit(long amount) throws InvalidAmountException {
 		if(amount <= 0)
 			throw new InvalidAmountException();

@@ -12,9 +12,9 @@ public class Admin extends Employee {
 	
 	public void displayOptionsMenu() {
 		System.out.println("1. Approve or deny applications.");
-		System.out.println("2. Customer operations.");
-		System.out.println("3. Account operations.");
-		System.out.println("4. Employee operations.");
+		System.out.println("2. Search for applications.");
+		System.out.println("3. Search for users.");
+		System.out.println("4. Search for accounts.");
 		System.out.println("5. User profile.");
 		System.out.println("6. Log Out.");
 	}

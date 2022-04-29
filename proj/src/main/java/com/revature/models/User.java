@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.revature.dao.DAO;
 import com.revature.dao.UserDAO;
 import com.revature.exceptions.InvalidPasswordException;
+import com.revature.exceptions.NotFoundException;
 
 public abstract class User {
 	private int userID;
@@ -42,8 +43,14 @@ public abstract class User {
 		this.userRole = userRole;
 	}
 	
-	public static User retrieve(int userID) {
-		return userDAO.retrieve(userID);
+	public static User retrieve(int userID) throws NotFoundException {
+		User user = userDAO.retrieve(userID);
+		
+		if(user == null)
+			throw new NotFoundException();
+
+		
+		return user;
 	}
 	
 	public void userProfile(Scanner scan) {

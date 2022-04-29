@@ -2,7 +2,7 @@ package com.revature.driver;
 
 import java.util.Scanner;
 
-import com.revature.exceptions.InvalidLoginException;
+//import com.revature.exceptions.InvalidLoginException;
 import com.revature.exceptions.InvalidPasswordException;
 import com.revature.exceptions.InvalidUsernameException;
 import com.revature.exceptions.UsernameTakenException;
@@ -19,29 +19,29 @@ public class Driver {
 		while(choice) {
 			user.displayOptionsMenu();
 			System.out.print("What would you like to do? ");
-		switch(scan.nextInt()) {
-			case 1: // Cust--apply, Empl/Admin--approve/deny
-				user.optionOne(scan);
-				break;
-			case 2: // Cust--deposit, Empl/Admin--customer ops
-				user.optionTwo(scan);
-				break;
-			case 3: // Cust--withdraw, Empl/Admin--account ops
-				user.optionThree(scan);
-				break;
-			case 4: // Cust--transfer, Empl--customer recs, Admin--employee ops
-				user.optionFour(scan);
-				break;
-			case 5: // user profile
-				user.userProfile(scan);
-				break;
-			case 6: // logout
-				System.out.println("Thank you! We'll see you soon!");
-				choice = false;
-				break;
-			default:
-				System.out.println("Invalid option! Try again.\n");
-		}
+			switch(scan.nextInt()) {
+				case 1: // Cust--apply, Empl/Admin--approve/deny
+					user.optionOne(scan);
+					break;
+				case 2: // Cust--deposit, Empl/Admin--customer ops
+					user.optionTwo(scan);
+					break;
+				case 3: // Cust--withdraw, Empl/Admin--account ops
+					user.optionThree(scan);
+					break;
+				case 4: // Cust--transfer     Empl--customer recs
+					user.optionFour(scan); // Admin--employee ops
+					break;
+				case 5: // user profile
+					user.userProfile(scan);
+					break;
+				case 6: // logout
+					System.out.println("Thank you! We'll see you soon!");
+					choice = false;
+					break;
+				default:
+					System.out.println("Invalid option! Try again.\n");
+			}
 		}
 		scan.close();
 	} // end main()
@@ -96,7 +96,7 @@ public class Driver {
 			try {
 				user = User.retrieve(login.validate());
 				success = true;
-			} catch(InvalidLoginException e) {
+			} catch(Exception e) {
 				System.out.println("Invalid login! Try again.\n");
 			} // end try-catch
 			
