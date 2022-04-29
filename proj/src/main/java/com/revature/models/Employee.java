@@ -14,6 +14,15 @@ public class Employee extends User {
 		super(userID);
 		this.setRole("employee");
 	}
+	
+	public static Employee retrieve(int userID) throws NotFoundException {
+		User empl = userDAO.retrieve(userID);
+		
+		if(!(empl instanceof Employee)) 
+			throw new NotFoundException();
+		
+		return (Employee)empl;
+	}
 
 	public void displayOptionsMenu() {
 		System.out.println("1. Process applications.");
@@ -96,7 +105,7 @@ public class Employee extends User {
 		}
 	}
 	
-	private void applicationSearch(Scanner scan) {
+	protected void applicationSearch(Scanner scan) {
 		int choice = 0;
 		
 		displayAppSearchMenu();
@@ -148,7 +157,7 @@ public class Employee extends User {
 		}
 	}
 	
-	private void customerSearch(Scanner scan) {
+	protected void customerSearch(Scanner scan) {
 		System.out.print("Enter a user ID: ");
 			
 		try {
@@ -159,7 +168,7 @@ public class Employee extends User {
 			
 	}
 	
-	private void accountSearch(Scanner scan) {
+	protected void accountSearch(Scanner scan) {
 		System.out.print("Enter an account number: ");
 		
 		try {
