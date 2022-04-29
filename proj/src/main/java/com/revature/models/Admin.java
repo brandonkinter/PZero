@@ -2,6 +2,8 @@ package com.revature.models;
 
 import java.util.Scanner;
 
+import com.revature.exceptions.InvalidAmountException;
+import com.revature.exceptions.NotEnoughFundsException;
 import com.revature.exceptions.NotFoundException;
 
 public class Admin extends Employee {
@@ -28,7 +30,7 @@ public class Admin extends Employee {
 		int choice = 0;
 		
 		while(choice != 5) {
-			displaySearchMenu();
+			this.displaySearchMenu();
 			System.out.print("What would you like to do? ");
 			choice = scan.nextInt();
 			
@@ -53,12 +55,59 @@ public class Admin extends Employee {
 		}
 	}
 	
+	@Override
+	public void optionThree(Scanner scan) {
+		boolean success = false;
+		
+		while(!success) {
+			System.out.println("What account would you like to access?");
+			System.out.print("Enter account number: ");
+			
+			try {
+				BankAccount acct = BankAccount.retrieve(scan.nextInt());
+				while(!success) {
+					this.displayTransactionsMenu();
+					System.out.print("What would you like to do? ");
+					switch(scan.nextInt()) {
+						case 1:
+							this.deposit(scan, acct);
+							success = true;
+							break;
+						case 2:
+							this.withdraw(scan, acct);
+							success = true;
+							break;
+						case 3:
+							this.transfer(scan, acct);
+							success = true;
+							break;
+						case 4:
+							success = true;
+							break;
+						default:
+							System.out.println("Invalid choice! Try again.");
+					}
+				}
+				
+			} catch(NotFoundException e) {
+				System.out.println("Account not found! Try again.\n");
+			}
+		}
+	}
+	
 	private void displaySearchMenu() {
 		System.out.println("1. Search for applications.");
 		System.out.println("2. Search for customers.");
 		System.out.println("3. Search for accounts.");
 		System.out.println("4. Search for employees.");
 		System.out.println("5. Quit.");
+	}
+	
+	private void displayTransactionsMenu() {
+		System.out.println("1. Deposit.");
+		System.out.println("2. Withdraw.");
+		System.out.println("3. Transfer");
+		System.out.println("4. Quit.");
 	}
 	
 	private void employeeSearch(Scanner scan) {
@@ -68,6 +117,66 @@ public class Admin extends Employee {
 			System.out.println(Employee.retrieve(scan.nextInt()));
 		} catch(NotFoundException e) {
 			System.out.println("Employee not found!");
+		}
+	}
+	
+	private void deposit(Scanner scan, BankAccount b) {
+		boolean success = false;
+		
+		while(!success) {
+			System.out.print("How much would you like to deposit? ");
+			long amount = (long)(scan.nextDouble() * 100);
+			try {
+				b.deposit(amount);
+				success = true;
+			} catch (InvalidAmountException e) {
+				System.out.println("Invalid amount! Try again.");
+			} // end try-catch
+		} // end while
+	}
+	
+	private void withdraw(Scanner scan, BankAccount b) {
+		boolean success = false;
+		
+		while(!success) {
+			System.out.print("How much would you like to withdraw? ");
+			long amount = (long)(scan.nextDouble() * 100);
+			try {
+				b.withdraw(amount);
+				success = true;
+			} catch(InvalidAmountException e) {
+				System.out.println("Invalid amount! Try again.");
+			} catch(NotEnoughFundsException e) {
+				System.out.println("Not enough funds! Try again.");
+			} // end try-catch
+		} // end while
+	}
+	
+	private void transfer(Scanner scan, BankAccount b) {
+		boolean success = false;
+		
+		while(!success) {
+			System.out.print("Enter destination account number: ");
+			try {
+				BankAccount dest = BankAccount.retrieve(scan.nextInt());
+				while(!success) {
+					System.out.print("How much would you " +
+						     		 "like to transfer? ");
+					long amount = (long)(scan.nextDouble() * 100);
+					try {
+						b.transfer(amount, dest);
+						success = true;
+					} catch(InvalidAmountException e) {
+						System.out.println("Invalid amount! " + 
+										   "Try again.");
+					} catch(NotEnoughFundsException e) {
+						System.out.println("Not enough funds! " + 
+										   "Try again.");
+					}
+				}
+			} catch(NotFoundException e) {
+				System.out.println("Invalid account! Try again. ");
+			}
 		}
 	}
 	
