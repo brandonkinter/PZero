@@ -9,6 +9,12 @@ public class AccountJunction {
 		this.junctionID = this.userID = this.acctNum = -1;
 	}
 	
+	public AccountJunction(int acctNum) {
+		this.junctionID = -1;
+		this.userID = -1;
+		this.acctNum = acctNum;
+	}
+	
 	public AccountJunction(int userID, int acctNum) {
 		this.junctionID = -1;
 		this.userID = userID;

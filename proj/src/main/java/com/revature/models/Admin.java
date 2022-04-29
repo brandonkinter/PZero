@@ -95,6 +95,11 @@ public class Admin extends Employee {
 		}
 	}
 	
+	@Override
+	public void optionFour(Scanner scan) {
+		this.cancel(scan);
+	}
+	
 	private void displaySearchMenu() {
 		System.out.println("1. Search for applications.");
 		System.out.println("2. Search for customers.");
@@ -177,6 +182,23 @@ public class Admin extends Employee {
 			} catch(NotFoundException e) {
 				System.out.println("Invalid account! Try again. ");
 			}
+		}
+	}
+	
+	private void cancel(Scanner scan) {
+		System.out.print("Enter an account number: ");
+		int acctNum = scan.nextInt();
+		
+		try {
+			BankAccount acct = BankAccount.retrieve(acctNum);
+			System.out.println(acct);
+			System.out.println("Users: " + BankAccount.retrieveCusts(acctNum));
+			System.out.print("\nAre you sure [Y/N]? ");
+			if(scan.next().toLowerCase().equals("y")) {
+				acct.delete();
+			}
+		} catch(NotFoundException e) {
+			System.out.println("Account not found!\n");
 		}
 	}
 	

@@ -75,6 +75,12 @@ public class BankAccount {
 		
 		return custs;
 	}
+	
+	public void delete() {
+		acctJuncDAO.delete(new AccountJunction(this.acctNum));
+		acctDAO.delete(this);
+	}
+	
 	public void deposit(long amount) throws InvalidAmountException {
 		if(amount <= 0)
 			throw new InvalidAmountException();

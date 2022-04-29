@@ -99,9 +99,9 @@ public class AccountJunctionDAO implements DAO<AccountJunction, Integer, Void> {
 		
 		try {
 			String command = "DELETE FROM acct_junctions " +
-						     "WHERE junction_id = ?";
+						     "WHERE acct_num = ?";
 			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1, junction.getJunctionID());
+			st.setInt(1, junction.getAcctNum());
 			st.execute();
 			
 		} catch(SQLException e) {
