@@ -104,7 +104,7 @@ public class Login {
 	
 	// utility method
 	// checks passwords for proper format
-	private void checkPassword(String password) 
+	public void checkPassword(String password) 
 							throws InvalidPasswordException {
 		// strings to check against
 		String special = "!?#$%&^*@+",

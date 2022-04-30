@@ -6,9 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 //import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.models.BankAccount;
 
 public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
+	final Logger logger = LogManager.getLogger(AccountDAO.class);
 	
 	public Integer create(BankAccount account) {
 		Connection c = ConnectionManager.getConnection();
@@ -22,13 +26,15 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
-				return rs.getInt(1);
+				int id = rs.getInt(1);
+				logger.info("created acct with acct_id of " + id);
+				return id;
 			}
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting create");
 			e.printStackTrace();
 		} // end try-catch
-		
 		return null;
 	} // end create()
 	
@@ -44,41 +50,17 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
+				logger.info("retrieved account with id " + acctNum);
 				return new BankAccount(acctNum, rs.getLong(2));
 			} // end if
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		} // end try-catch
-		
+		logger.error("no account found with id " + acctNum);
 		return null;
 	} // end retrieve()
-	
-	/*public ArrayList<BankAccount> retrieveByCust(Integer userID) {
-		Connection c = ConnectionManager.getConnection();
-		
-		try {
-			String command = "SELECT * " +
-							 "FROM accounts " +
-							 "INNER JOIN acct_junctions " +
-							 "USING (acct_num) " +
-							 "WHERE user_id = ?;";
-			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1, userID);
-			ResultSet rs = st.executeQuery();
-			
-			ArrayList<BankAccount> accounts = new ArrayList<BankAccount>();
-			
-			while(rs.next()) {
-				accounts.add(new BankAccount(rs.getInt(1), rs.getLong(3)));
-			}
-			
-			return accounts;
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}*/
 	
 	public void update(BankAccount account) {
 		Connection c = ConnectionManager.getConnection();
@@ -91,8 +73,9 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 			st.setLong(1, account.getBalance());
 			st.setInt(2, account.getAcctNum());
 			st.execute();
-			
+			logger.info("updated account with id " + account.getAcctNum());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting update");
 			e.printStackTrace();
 		} // end try-catch
 		
@@ -107,8 +90,9 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, account.getAcctNum());
 			st.execute();
-			
+			logger.info("deleted account with id " + account.getAcctNum());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting delete");
 			e.printStackTrace();
 		} // end try-catch
 		

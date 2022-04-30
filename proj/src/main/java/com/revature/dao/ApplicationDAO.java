@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.models.Application;
 
 public class ApplicationDAO implements DAO<Application, Integer, Integer> {
+	final Logger logger = LogManager.getLogger(ApplicationDAO.class);
 	
 	public Integer create(Application app) {
 		Connection c = ConnectionManager.getConnection();
@@ -25,10 +29,13 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
-				return rs.getInt(1);
+				int id = rs.getInt(1);
+				logger.info("created application with id " + id);
+				return id;
 			}
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting create");
 			e.printStackTrace();
 		}
 		return null;
@@ -46,13 +53,16 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
+				logger.info("retrieved application with id " + appID);
 				return new Application(appID, rs.getLong(2), rs.getLong(3), 
 									   rs.getBoolean(4));
 			}
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
+		logger.error("no application found with id " + appID);
 		return null;
 	}
 	
@@ -72,12 +82,14 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 				result.add(new Application(rs.getInt(1), rs.getLong(2), 
 									       rs.getLong(3), rs.getBoolean(4)));
 			}
-			
+			logger.info("retrieved all applications for customer " + userID);
 			return result;
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
+		logger.error("no applications found for customer " + userID);
 		return null;
 	}
 	
@@ -96,11 +108,13 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 				apps.add(new Application(rs.getInt(1), rs.getLong(2), 
 									     rs.getLong(3), rs.getBoolean(4)));
 			}
+			logger.info("retrieved all open applications");
 			return apps;
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
-		
+		logger.info("no open applications found");
 		return null;
 	}
 	
@@ -119,11 +133,13 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 				apps.add(new Application(rs.getInt(1), rs.getLong(2),
 										 rs.getLong(3), rs.getBoolean(4)));
 			}
+			logger.info("retrieved all closed applications");
 			return apps;
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
-		
+		logger.info("no closed applications found");
 		return null;
 	}
 	
@@ -141,11 +157,13 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 				apps.add(new Application(rs.getInt(1), rs.getLong(2), 
 										 rs.getLong(3), rs.getBoolean(4)));
 			}
+			logger.info("retrieved all applications");
 			return apps;
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
-		
+		logger.info("no applications found");
 		return null;
 	}
 	
@@ -159,8 +177,9 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, app.getAppID());
 			st.execute();
-			
+			logger.info("closed application with id " + app.getAppID());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting update");
 			e.printStackTrace();
 		}
 	}
@@ -174,8 +193,10 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1,  app.getAppID());
 			st.execute();
+			logger.info("deleted application with id " + app.getAppID());
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting delete");
 			e.printStackTrace();
 		}
 	}

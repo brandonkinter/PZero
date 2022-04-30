@@ -6,9 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.models.AppJunction;
 
 public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
+	final Logger logger = LogManager.getLogger(AppJunctionDAO.class);
+	
 	public Void create(AppJunction appJunc) {
 		Connection c = ConnectionManager.getConnection();
 		
@@ -19,8 +24,10 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			st.setInt(1, appJunc.getUserID());
 			st.setInt(2, appJunc.getAppID());
 			st.execute();
+			logger.info("created app junction");
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting create");
 			e.printStackTrace();
 		}
 		return null;
@@ -38,11 +45,14 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
+				logger.info("retrieved app junction with id" + junctionID);
 				return new AppJunction(junctionID, rs.getInt(2), rs.getInt(3));
 			}
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
+		logger.info("no app junctions found with id " + junctionID);
 		return null;
 	}
 	
@@ -61,10 +71,13 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			while(rs.next()) {
 				juncs.add(rs.getInt(2));
 			}
+			logger.info("retrieved all users for application " + appID);
 			return juncs;
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		}
+		logger.info("no users found for application " + appID);
 		return null;
 	}
 	
@@ -80,8 +93,11 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			st.setInt(2, appJunc.getAppID());
 			st.setInt(3, appJunc.getJunctionID());
 			st.execute();
+			logger.info("updated app junction with id " +
+						appJunc.getJunctionID());
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting update");
 			e.printStackTrace();
 		}
 	}
@@ -95,7 +111,10 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, appJunc.getJunctionID());
 			st.execute();
+			logger.info("deleted app junction with id " +
+						appJunc.getJunctionID());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting delete");
 			e.printStackTrace();
 		}
 	}

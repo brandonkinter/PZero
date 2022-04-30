@@ -1,0 +1,24 @@
+2022-04-30 12:23:16.445 [main] DEBUG com.revature.driver.LogTestDriver - hello
+2022-04-30 12:23:16.447 [main] INFO  com.revature.driver.LogTestDriver - hello
+2022-04-30 12:23:16.447 [main] WARN  com.revature.driver.LogTestDriver - hello
+2022-04-30 12:23:16.447 [main] ERROR com.revature.driver.LogTestDriver - hello
+2022-04-30 12:23:16.447 [main] FATAL com.revature.driver.LogTestDriver - hello
+2022-04-30 12:41:20.610 [main] DEBUG com.revature.driver.LogTestDriver - hello
+2022-04-30 12:41:20.611 [main] INFO  com.revature.driver.LogTestDriver - hello
+2022-04-30 12:41:20.611 [main] WARN  com.revature.driver.LogTestDriver - hello
+2022-04-30 12:41:20.611 [main] ERROR com.revature.driver.LogTestDriver - hello
+2022-04-30 12:41:20.612 [main] FATAL com.revature.driver.LogTestDriver - hello
+2022-04-30 12:55:06.048 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 7
+2022-04-30 13:37:34.198 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-04-30 13:37:34.257 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-04-30 13:37:34.299 [main] INFO  com.revature.dao.UserDAO - retrieved all accounts for user 2
+2022-04-30 13:37:38.916 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-04-30 13:37:40.445 [main] INFO  com.revature.dao.AccountDAO - updated account with id 5
+2022-04-30 13:37:46.596 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-04-30 13:37:48.067 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-04-30 13:37:49.515 [main] INFO  com.revature.dao.AccountDAO - updated account with id 4
+2022-04-30 13:37:49.555 [main] INFO  com.revature.dao.AccountDAO - updated account with id 5
+2022-04-30 13:37:54.978 [main] INFO  com.revature.dao.LoginDAO - retrieved login from userID 2
+2022-04-30 13:37:59.421 [main] INFO  com.revature.dao.LoginDAO - updated password for username kinter
+2022-04-30 13:38:01.900 [main] INFO  com.revature.dao.LoginDAO - retrieved login from userID 2
+2022-04-30 13:38:04.800 [main] INFO  com.revature.dao.LoginDAO - updated password for username kinter

@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.models.BankAccount;
 import com.revature.models.Admin;
 import com.revature.models.Customer;
@@ -14,6 +17,8 @@ import com.revature.models.User;
 
 public class UserDAO implements DAO<User, Integer, Void>{
 
+	final Logger logger = LogManager.getLogger(UserDAO.class);
+	
 	public Void create(User user) {
 		Connection c = ConnectionManager.getConnection();
 		
@@ -21,14 +26,14 @@ public class UserDAO implements DAO<User, Integer, Void>{
 			String command = "INSERT INTO users " +
 							 "VALUES (?, ?);";
 			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1,  user.getID());
-			st.setString(2,  user.getRole());
+			st.setInt(1, user.getID());
+			st.setString(2, user.getRole());
 			st.execute();
-
+			logger.info("created new user with id " + user.getID());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting create");
 			e.printStackTrace();
 		} // end try-catch
-		
 		return null;
 	} // end create()
 		
@@ -47,19 +52,24 @@ public class UserDAO implements DAO<User, Integer, Void>{
 				String role = rs.getString(2);
 				switch(role) {
 					case "customer":
+						logger.info("retrieved customer with id " + userID);
 						return new Customer(userID, getAccounts(userID));
 					case "employee":
+						logger.info("retrieved employee with id " + userID);
 						return new Employee(userID);
 					case "admin":
+						logger.info("retrieved admin with id " + userID);
 						return new Admin(userID);
 				}
 
 			} // end if
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		} // end try-catch
 		
+		logger.error("user not found");
 		return null;
 	} // end retrieve()
 		
@@ -74,8 +84,9 @@ public class UserDAO implements DAO<User, Integer, Void>{
 			st.setString(1, user.getRole());
 			st.setInt(2, user.getID());
 			st.execute();
-			
+			logger.info("updated user with id of " + user.getID());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting update");
 			e.printStackTrace();
 		} // end try-catch
 		
@@ -90,8 +101,9 @@ public class UserDAO implements DAO<User, Integer, Void>{
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, user.getID());
 			st.execute();
-			
+			logger.info("deleted user with id " + user.getID());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting delete");
 			e.printStackTrace();
 		} // end try-catch 
 		
@@ -115,13 +127,14 @@ public class UserDAO implements DAO<User, Integer, Void>{
 			while(rs.next()) {
 				result.add(new BankAccount(rs.getInt(1), rs.getLong(2)));
 			} // end while 
-			
+			logger.info("retrieved all accounts for user " + userID);
 			return result;
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		} // end try-catch
-		
+		logger.error("no accounts found for user " + userID);
 		return null;
 	} // end getAccounts()
 	

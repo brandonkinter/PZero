@@ -5,9 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.revature.models.Login;
 
 public class LoginDAO  implements DAO<Login, String, Integer> {
+	final Logger logger = LogManager.getLogger(LoginDAO.class);
 	
 	public Integer create(Login login) {
 		Connection c = ConnectionManager.getConnection();
@@ -22,13 +26,15 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
-				return rs.getInt(1);
+				int id = rs.getInt(1);
+				logger.info("create login success, generated userID of " + id);
+				return id;
 			}
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting create");
 			e.printStackTrace();
 		} // end try-catch
-		
 		return null;
 	} // end create()
 	
@@ -44,13 +50,15 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
+				logger.info("retrieved login of username " + username);
 				return new Login(username, rs.getString(2), rs.getInt(3));
 			} // end if
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		} // end try-catch
-		
+		logger.info("no login found with username " + username);
 		return null;
 	} // end retrieve()
 	
@@ -66,13 +74,15 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
+				logger.info("retrieved login from userID " + userID);
 				return new Login(rs.getString(1), rs.getString(2), userID);
 			} // end if
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		} // end try-catch
-		
+		logger.info("no login found from userID " + userID);
 		return null;
 	} // end retrieve()
 	
@@ -88,8 +98,10 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 			st.setString(1, login.getPassword());
 			st.setString(2, login.getUsername());
 			st.execute();
-			
+			logger.info("updated password for username " + 
+						login.getUsername());
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting update");
 			e.printStackTrace();
 		} // end try-catch
 		
@@ -104,8 +116,10 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 			PreparedStatement st = c.prepareStatement(command);
 			st.setString(1, login.getUsername());
 			st.execute();
+			logger.info("deleted login for username " + login.getUsername());
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting delete");
 			e.printStackTrace();
 		} // end try-catch
 		
@@ -125,13 +139,16 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
-				return rs.getInt(1);
+				int id = rs.getInt(1);
+				logger.info("validated login for user with id " + id);
+				return id;
 			} // end if
 			
 		} catch(SQLException e) {
+			logger.error("SQL error while attempting validate");
 			e.printStackTrace();
 		} // end try-catch
-		
+		logger.info("no valid login found");
 		return null;
 	} // end validate()
 	

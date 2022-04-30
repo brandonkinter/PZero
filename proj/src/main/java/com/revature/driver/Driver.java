@@ -16,7 +16,7 @@ public class Driver {
 		Scanner scan = new Scanner(System.in);
 		boolean choice = true;
 		User user = introMenu(scan);
-		while(choice) {
+		while(choice && user != null) {
 			user.displayOptionsMenu();
 			System.out.print("What would you like to do? ");
 			switch(scan.nextInt()) {
