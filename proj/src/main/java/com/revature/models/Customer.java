@@ -95,25 +95,63 @@ public class Customer extends User {
 	private void apply(Scanner scan) {
 		Application app = new Application();
 		boolean success = false;
-		System.out.println("-----ACCOUNT APPLICATION-----\n");
-		
+		System.out.println("-----ACCOUNT APPLICATION-----\n\n");
 		while(!success) {
-			System.out.print("What is your annual income? ");
-			try {
-				app.setIncome((long)(scan.nextDouble() * 100));
-				while(!success) {
-					System.out.print("What would you like your " +
-									 "initial deposit to be (Minimum $100)? ");
-					try {
-						app.setDeposit((long)(scan.nextDouble() * 100));
-						app.create(this.getID());
-						success = true;
-					} catch(InvalidAmountException e) {
-						System.out.println("Invalid deposit! Try again. \n");
+			ArrayList<Integer> userIDs = new ArrayList<Integer>();
+			userIDs.add(this.getID());
+			System.out.println("Is this an individual or joint account? ");
+			System.out.println("1. Individual.");
+			System.out.println("2. Joint.");
+			switch(scan.nextInt()) {
+				case 2:
+					System.out.print("How many users will " +
+									 "be on the account (include yourself)?");
+					int numPpl = scan.nextInt();
+					for(int i = 2; i < numPpl + 1; ++i) {
+						while(true) {
+							System.out.print("Enter applicant " + i + "'s " +
+								     		 "ID (Don't include your ID): ");
+							int id = scan.nextInt();
+							try {
+								Customer.retrieve(id);
+								if(id == this.getID())
+									throw new NotFoundException();
+								userIDs.add(id);
+								break;
+							} catch(NotFoundException e) {
+								System.out.println("Invalid User ID! " +
+												   "Try again.\n");
+							}
+						}
 					}
-				}
-			} catch(InvalidAmountException e) {
-				System.out.println("Invalid amount! Try again. \n");
+				case 1:
+					app.setUserIDs(userIDs);
+					while(!success) {
+						System.out.print("What is your annual income? ");
+						try {
+							app.setIncome((long)(scan.nextDouble() * 100));
+							while(!success) {
+								System.out.print("What would you like " +
+												 "your initial deposit " + 
+											     "to be (Minimum $100)? ");
+								try {
+									app.setDeposit(
+										(long)(scan.nextDouble() * 100));
+									app.create();
+									success = true;
+								} catch(InvalidAmountException e) {
+									System.out.println("Invalid deposit!" +
+													   " Try again. \n");
+								}
+							}
+						} catch(InvalidAmountException e) {
+							System.out.println("Invalid amount! " +
+											   "Try again. \n");
+						}
+					}
+					break;
+				default:
+					System.out.println("Invalid choice! Try again.");
 			}
 		}
 		System.out.println("\n\nThank you for submitting an application!");

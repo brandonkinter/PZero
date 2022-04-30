@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.ArrayList;
 import java.util.Queue;
 
 import com.revature.dao.AppJunctionDAO;
@@ -10,7 +11,7 @@ import com.revature.exceptions.NotFoundException;
 
 public class Application {
 	private int appID;
-	private int userID;
+	private ArrayList<Integer> userIDs;
 	private long income;
 	private long deposit;
 	private boolean isOpen;
@@ -22,7 +23,7 @@ public class Application {
 		this.appID = -1;
 		this.income = 0;
 		this.deposit = 0;
-		this.userID = -1;
+		this.userIDs = null;
 		this.isOpen = false;
 	}
 	
@@ -30,13 +31,14 @@ public class Application {
 		this.appID = appID;
 		this.income = income;
 		this.deposit = deposit;
-		this.userID = -1;
+		this.userIDs = new ArrayList<Integer>();
 		this.isOpen = true;
 	}
 	
-	public Application(int appID, int userID, long income, long deposit) {
+	public Application(int appID, ArrayList<Integer> userIDs, 
+					   long income, long deposit) {
 		this.appID = appID;
-		this.userID = userID;
+		this.userIDs = userIDs;
 		this.income = income;
 		this.deposit = deposit;
 		this.isOpen = true;
@@ -44,16 +46,16 @@ public class Application {
 	
 	public Application(int appID, long income, long deposit, boolean isOpen) {
 		this.appID = appID;
-		this.userID = -1;
+		this.userIDs = new ArrayList<Integer>();
 		this.income = income;
 		this.deposit = deposit;
 		this.isOpen = isOpen;
 	}
 	
-	public Application(int appID, int userID, long income, 
+	public Application(int appID, ArrayList<Integer> userIDs, long income, 
 					   long deposit, boolean isOpen) {
 		this.appID = appID;
-		this.userID = userID;
+		this.userIDs = userIDs;
 		this.income = income;
 		this.deposit = deposit;
 		this.isOpen = isOpen;
@@ -71,8 +73,8 @@ public class Application {
 		return this.deposit;
 	}
 	
-	public int getUserID() {
-		return this.userID;
+	public ArrayList<Integer> getUserIDs() {
+		return this.userIDs;
 	}
 	
 	public boolean getIsOpen() {
@@ -83,8 +85,8 @@ public class Application {
 		this.appID = appID;
 	}
 	
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUserIDs(ArrayList<Integer> userIDs) {
+		this.userIDs = userIDs;
 	}
 	
 	public void setIncome(long income) throws InvalidAmountException {
@@ -105,8 +107,12 @@ public class Application {
 		this.isOpen = isOpen;
 	}
 	
-	public void create(int userID) {
-		appJuncDAO.create(new AppJunction(userID, appDAO.create(this)));
+	public void create() {
+		int appID = appDAO.create(this);
+		
+		for(Integer userID : userIDs) {
+			appJuncDAO.create(new AppJunction(userID, appID));
+		}
 	}
 	
 	public static Application retrieve(int appID) throws NotFoundException {
@@ -142,7 +148,7 @@ public class Application {
 	}
 	
 	public void close() {
-		appDAO.close(this);
+		appDAO.update(this);
 	}
 	
 	public void delete() {
@@ -153,7 +159,7 @@ public class Application {
 	public String toString() {
 		String status = isOpen ? "open\n\n" : "closed\n\n";
 		
-		return  "\n\nUser ID: " + this.userID +
+		return  "\n\nUser IDs: " + this.userIDs +
 				"\n\nApplication ID: " + this.appID +
 				"\n\nAnnual Income: " + this.income + 
 				"\n\nInitial Deposit: " + this.deposit +

@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -54,6 +55,11 @@ public class Employee extends User {
 		boolean choosing = true;
 		
 		if(!apps.isEmpty()) {
+			for(Application app : apps) {
+				ArrayList<Integer> ids 
+							= AppJunction.retrieveIDsByApp(app.getAppID());
+				app.setUserIDs(ids);
+			}
 			if(apps.size() > 1) {
 				System.out.println("There are " + apps.size() + 
 							   	   " open applications.");
@@ -76,7 +82,7 @@ public class Employee extends User {
 							case 1:
 								BankAccount acct = new BankAccount(
 															app.getDeposit());
-								acct.create(app.getUserID());
+								acct.create(app.getUserIDs());
 								choosing = false;
 								break;
 							case 2:

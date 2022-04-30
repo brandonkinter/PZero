@@ -38,19 +38,16 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT app_id, user_id, income, " +
-							 "deposit, is_open " +
+			String command = "SELECT * " +
 							 "FROM applications " +
-							 "INNER JOIN app_junctions " +
-							 "USING (app_id) " +
 							 "WHERE app_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, appID);
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next()) {
-				return new Application(appID, rs.getInt(2), rs.getLong(3), 
-									   rs.getLong(4), rs.getBoolean(5));
+				return new Application(appID, rs.getLong(2), rs.getLong(3), 
+									   rs.getBoolean(4));
 			}
 			
 		} catch(SQLException e) {
@@ -63,11 +60,8 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT app_id, user_id, income, " +
-							 "deposit, is_open " +
+			String command = "SELECT * " +
 							 "FROM applications " +
-							 "INNER JOIN app_junctions " +
-							 "USING (app_id) " +
 							 "WHERE user_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, userID);
@@ -75,8 +69,8 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 			Queue<Application> result = new LinkedList<Application>();
 			
 			while(rs.next()) {
-				result.add(new Application(rs.getInt(1), userID, rs.getLong(3), 
-									       rs.getLong(4), rs.getBoolean(5)));
+				result.add(new Application(rs.getInt(1), rs.getLong(2), 
+									       rs.getLong(3), rs.getBoolean(4)));
 			}
 			
 			return result;
@@ -91,20 +85,16 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT app_id, user_id, income, " + 
-								    "deposit, is_open " +
+			String command = "SELECT * " + 
 							 "FROM applications " +
-							 "INNER JOIN app_junctions " +
-							 "USING (app_id) " +
 							 "WHERE is_open = TRUE " +
 							 "ORDER BY app_id ASC;";
 			PreparedStatement st = c.prepareStatement(command);
 			ResultSet rs = st.executeQuery();
 			Queue<Application> apps = new LinkedList<Application>();
 			while(rs.next()) {
-				apps.add(new Application(
-							rs.getInt(1), rs.getInt(2), 
-							rs.getLong(3), rs.getLong(4), rs.getBoolean(5)));
+				apps.add(new Application(rs.getInt(1), rs.getLong(2), 
+									     rs.getLong(3), rs.getBoolean(4)));
 			}
 			return apps;
 		} catch(SQLException e) {
@@ -118,20 +108,16 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT app_id, user_id, income, " + 
-								    "deposit, is_open " +
+			String command = "SELECT * " + 
 							 "FROM applications " +
-							 "INNER JOIN app_junctions " +
-							 "USING (app_id) " +
 							 "WHERE is_open = FALSE " +
 							 "ORDER BY app_id ASC;";
 			PreparedStatement st = c.prepareStatement(command);
 			ResultSet rs = st.executeQuery();
 			Queue<Application> apps = new LinkedList<Application>();
 			while(rs.next()) {
-				apps.add(new Application(
-							rs.getInt(1), rs.getInt(2), 
-							rs.getLong(3), rs.getLong(4), rs.getBoolean(5)));
+				apps.add(new Application(rs.getInt(1), rs.getLong(2),
+										 rs.getLong(3), rs.getBoolean(4)));
 			}
 			return apps;
 		} catch(SQLException e) {
@@ -145,19 +131,15 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT app_id, user_id, income, " + 
-								    "deposit, is_open " +
+			String command = "SELECT * " +
 							 "FROM applications " +
-							 "INNER JOIN app_junctions " +
-							 "USING (app_id) " +
 							 "ORDER BY app_id ASC;";
 			PreparedStatement st = c.prepareStatement(command);
 			ResultSet rs = st.executeQuery();
 			Queue<Application> apps = new LinkedList<Application>();
 			while(rs.next()) {
-				apps.add(new Application(
-							rs.getInt(1), rs.getInt(2), 
-							rs.getLong(3), rs.getLong(4), rs.getBoolean(5)));
+				apps.add(new Application(rs.getInt(1), rs.getLong(2), 
+										 rs.getLong(3), rs.getBoolean(4)));
 			}
 			return apps;
 		} catch(SQLException e) {
@@ -168,23 +150,6 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 	}
 	
 	public void update(Application app) {
-		Connection c = ConnectionManager.getConnection();
-		
-		try {
-			String command = "UPDATE applications " +
-							 "SET income = ? " + 
-							 "WHERE app_id = ?;";
-			PreparedStatement st = c.prepareStatement(command);
-			st.setLong(1, app.getIncome());
-			st.setInt(2, app.getAppID());
-			st.execute();
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void close(Application app) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.revature.models.AppJunction;
 
@@ -25,7 +26,27 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 		return null;
 	}
 	
-	public AppJunction retrieve(Integer appID) {
+	public AppJunction retrieve(Integer junctionID) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT * " +
+							 "FROM app_junctions " +
+							 "WHERE junction_id = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, junctionID);
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+				return new AppJunction(junctionID, rs.getInt(2), rs.getInt(3));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<Integer> retrieveIDsByApp(Integer appID) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
@@ -35,10 +56,12 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, appID);
 			ResultSet rs = st.executeQuery();
+			ArrayList<Integer> juncs = new ArrayList<Integer>();
 			
-			if(rs.next()) {
-				return new AppJunction(rs.getInt(1), rs.getInt(2), appID);
+			while(rs.next()) {
+				juncs.add(rs.getInt(2));
 			}
+			return juncs;
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

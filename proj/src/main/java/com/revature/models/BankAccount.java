@@ -46,8 +46,12 @@ public class BankAccount {
 		this.balance = balance;
 	}
 	
-	public void create(int userID) {
-		acctJuncDAO.create(new AccountJunction(userID, acctDAO.create(this)));
+	public void create(ArrayList<Integer> userIDs) {
+		int acctNum = acctDAO.create(this);
+		
+		for(Integer userID : userIDs) {
+			acctJuncDAO.create(new AccountJunction(userID, acctNum));
+		}
 	}
 	
 	public static BankAccount retrieve(int acctNum) 
