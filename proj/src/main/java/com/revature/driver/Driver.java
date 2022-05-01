@@ -2,6 +2,9 @@ package com.revature.driver;
 
 import java.util.Scanner;
 
+import com.revature.controller.AccountController;
+import com.revature.controller.LoginController;
+import com.revature.controller.UserController;
 //import com.revature.exceptions.InvalidLoginException;
 import com.revature.exceptions.InvalidPasswordException;
 import com.revature.exceptions.InvalidUsernameException;
@@ -10,9 +13,20 @@ import com.revature.models.Customer;
 import com.revature.models.Login;
 import com.revature.models.User;
 
+import io.javalin.Javalin;
+
 public class Driver {
    
 	public static void main(String[] args) throws InterruptedException {
+		Javalin app = Javalin.create().start(7070);
+		
+		@SuppressWarnings("unused")
+		UserController userController = new UserController(app);
+		@SuppressWarnings("unused")
+		AccountController acctController = new AccountController(app);
+		@SuppressWarnings("unused")
+		LoginController loginController = new LoginController(app);
+		
 		Scanner scan = new Scanner(System.in);
 		boolean choice = true;
 		User user = introMenu(scan);

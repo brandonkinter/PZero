@@ -64,7 +64,7 @@ public class Admin extends Employee {
 			System.out.print("Enter account number: ");
 			
 			try {
-				BankAccount acct = BankAccount.retrieve(scan.nextInt());
+				Account acct = Account.retrieve(scan.nextInt());
 				while(!success) {
 					this.displayTransactionsMenu();
 					System.out.print("What would you like to do? ");
@@ -125,7 +125,7 @@ public class Admin extends Employee {
 		}
 	}
 	
-	private void deposit(Scanner scan, BankAccount b) {
+	private void deposit(Scanner scan, Account b) {
 		boolean success = false;
 		
 		while(!success) {
@@ -140,7 +140,7 @@ public class Admin extends Employee {
 		} // end while
 	}
 	
-	private void withdraw(Scanner scan, BankAccount b) {
+	private void withdraw(Scanner scan, Account b) {
 		boolean success = false;
 		
 		while(!success) {
@@ -157,13 +157,13 @@ public class Admin extends Employee {
 		} // end while
 	}
 	
-	private void transfer(Scanner scan, BankAccount b) {
+	private void transfer(Scanner scan, Account b) {
 		boolean success = false;
 		
 		while(!success) {
 			System.out.print("Enter destination account number: ");
 			try {
-				BankAccount dest = BankAccount.retrieve(scan.nextInt());
+				Account dest = Account.retrieve(scan.nextInt());
 				while(!success) {
 					System.out.print("How much would you " +
 						     		 "like to transfer? ");
@@ -190,9 +190,9 @@ public class Admin extends Employee {
 		int acctNum = scan.nextInt();
 		
 		try {
-			BankAccount acct = BankAccount.retrieve(acctNum);
+			Account acct = Account.retrieve(acctNum);
 			System.out.println(acct);
-			System.out.println("Users: " + BankAccount.retrieveCusts(acctNum));
+			System.out.println("Users: " + Account.retrieveCusts(acctNum));
 			System.out.print("\nAre you sure [Y/N]? ");
 			if(scan.next().toLowerCase().equals("y")) {
 				acct.delete();

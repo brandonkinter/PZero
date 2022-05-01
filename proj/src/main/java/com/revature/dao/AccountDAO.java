@@ -9,12 +9,12 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.revature.models.BankAccount;
+import com.revature.models.Account;
 
-public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
+public class AccountDAO implements DAO<Account, Integer, Integer> {
 	final Logger logger = LogManager.getLogger(AccountDAO.class);
 	
-	public Integer create(BankAccount account) {
+	public Integer create(Account account) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
@@ -38,7 +38,7 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 		return null;
 	} // end create()
 	
-	public BankAccount retrieve(Integer acctNum) {
+	public Account retrieve(Integer acctNum) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
@@ -51,7 +51,7 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 			
 			if(rs.next()) {
 				logger.info("retrieved account with id " + acctNum);
-				return new BankAccount(acctNum, rs.getLong(2));
+				return new Account(acctNum, rs.getLong(2));
 			} // end if
 			
 		} catch(SQLException e) {
@@ -62,7 +62,7 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 		return null;
 	} // end retrieve()
 	
-	public void update(BankAccount account) {
+	public void update(Account account) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
@@ -81,7 +81,7 @@ public class AccountDAO implements DAO<BankAccount, Integer, Integer> {
 		
 	} // end update()
 	
-	public void delete(BankAccount account) {
+	public void delete(Account account) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {

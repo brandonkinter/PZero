@@ -9,23 +9,23 @@ import com.revature.exceptions.NotFoundException;
 import com.revature.exceptions.InvalidAmountException;
 import com.revature.exceptions.NotEnoughFundsException;
 
-public class BankAccount {
+public class Account {
 	private int acctNum;
 	private long balance;
 	private static AccountDAO acctDAO = new AccountDAO();
 	private static AccountJunctionDAO acctJuncDAO = new AccountJunctionDAO();
 	
-	public BankAccount() {
+	public Account() {
 		this.acctNum = -1;
 		this.balance = 0;
 	}
 	
-	public BankAccount(long balance) {
+	public Account(long balance) {
 		this.acctNum = -1;
 		this.balance = balance;
 	}
 	
-	public BankAccount(int acctNum, long balance) {
+	public Account(int acctNum, long balance) {
 		this.acctNum = acctNum;
 		this.balance = balance;
 	}
@@ -54,9 +54,9 @@ public class BankAccount {
 		}
 	}
 	
-	public static BankAccount retrieve(int acctNum) 
+	public static Account retrieve(int acctNum) 
 									throws NotFoundException {
-		BankAccount account = acctDAO.retrieve(acctNum);
+		Account account = acctDAO.retrieve(acctNum);
 		
 		if(account == null)
 			throw new NotFoundException();
@@ -104,7 +104,7 @@ public class BankAccount {
 		acctDAO.update(this);
 	}
 	
-	public void transfer(long amount, BankAccount dest) 
+	public void transfer(long amount, Account dest) 
 											throws InvalidAmountException, 
 												   NotEnoughFundsException {
 		this.withdraw(amount);
@@ -130,7 +130,7 @@ public class BankAccount {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BankAccount other = (BankAccount) obj;
+		Account other = (Account) obj;
 		return acctNum == other.acctNum && balance == other.balance;
 	}
 	

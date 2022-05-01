@@ -22,3 +22,10 @@
 2022-04-30 13:37:59.421 [main] INFO  com.revature.dao.LoginDAO - updated password for username kinter
 2022-04-30 13:38:01.900 [main] INFO  com.revature.dao.LoginDAO - retrieved login from userID 2
 2022-04-30 13:38:04.800 [main] INFO  com.revature.dao.LoginDAO - updated password for username kinter
+2022-04-30 18:28:43.906 [JettyServerThreadPool-16] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-04-30 18:28:43.963 [JettyServerThreadPool-16] INFO  com.revature.dao.UserDAO - retrieved all accounts for user 2
+2022-04-30 18:41:25.462 [JettyServerThreadPool-19] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-04-30 18:41:25.504 [JettyServerThreadPool-19] INFO  com.revature.dao.UserDAO - retrieved all accounts for user 2
+2022-04-30 18:48:00.359 [JettyServerThreadPool-28] ERROR com.revature.dao.UserDAO - SQL error while attempting create
+2022-04-30 18:50:01.685 [JettyServerThreadPool-28] INFO  com.revature.dao.UserDAO - created new user with id 8
+2022-04-30 18:55:41.297 [JettyServerThreadPool-15] INFO  com.revature.dao.UserDAO - deleted user with id 8

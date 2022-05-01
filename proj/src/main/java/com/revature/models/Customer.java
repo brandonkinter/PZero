@@ -9,7 +9,7 @@ import com.revature.exceptions.NotEnoughFundsException;
 
 public class Customer extends User {
 	
-	private ArrayList<BankAccount> accounts;
+	private ArrayList<Account> accounts;
 	
 	public Customer() {
 		super();
@@ -21,14 +21,14 @@ public class Customer extends User {
 		this.setRole("customer");
 	}
 	
-	public Customer(int userID, ArrayList<BankAccount> accounts) {
+	public Customer(int userID, ArrayList<Account> accounts) {
 		super(userID);
 		this.setRole("customer");
 		this.accounts = accounts;
 		
 	}
 	
-	public ArrayList<BankAccount> getAccounts() {
+	public ArrayList<Account> getAccounts() {
 		return this.accounts;
 	}
 	
@@ -85,7 +85,7 @@ public class Customer extends User {
 							   "Press '1' below to apply for an account!");
 		} else {
 			System.out.println("\n---  Account  ------  Balance  ---\n");
-			for(BankAccount i : accounts) 
+			for(Account i : accounts) 
 				System.out.println
 							("        " + i.getAcctNum() + "            $" +
 							 String.format("%.2f", i.getBalance()/100.0));
@@ -167,9 +167,9 @@ public class Customer extends User {
 			this.displayAccounts();
 			System.out.print("Enter account number: ");
 			try {
-				BankAccount b = accounts.get(
+				Account b = accounts.get(
 									accounts.indexOf(
-											BankAccount.retrieve(
+											Account.retrieve(
 													scan.nextInt())));
 				while(!success) {
 					System.out.print("How much would you like to deposit? ");
@@ -197,9 +197,9 @@ public class Customer extends User {
 			this.displayAccounts();
 			System.out.print("Enter account number: ");
 			try {
-				BankAccount b = accounts.get(
+				Account b = accounts.get(
 									accounts.indexOf(
-											BankAccount.retrieve(
+											Account.retrieve(
 													scan.nextInt())));
 				while(!success) {
 					System.out.print("How much would you like to withdraw? ");
@@ -229,15 +229,15 @@ public class Customer extends User {
 			this.displayAccounts();
 			System.out.print("Enter account number: ");
 			try {
-				BankAccount b = accounts.get(
+				Account b = accounts.get(
 									accounts.indexOf(
-											BankAccount.retrieve(
+											Account.retrieve(
 													scan.nextInt())));
 				while(!success) {
 					System.out.print("Enter destination account number: ");
 					try {
-						BankAccount dest 
-									  = BankAccount.retrieve(scan.nextInt());
+						Account dest 
+									  = Account.retrieve(scan.nextInt());
 						while(!success) {
 							System.out.print("How much would you " +
 								     		 "like to transfer? ");

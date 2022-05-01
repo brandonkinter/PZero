@@ -80,7 +80,7 @@ public class Employee extends User {
 						System.out.print("What would you like to do? ");
 						switch(scan.nextInt()) {
 							case 1:
-								BankAccount acct = new BankAccount(
+								Account acct = new Account(
 															app.getDeposit());
 								acct.create(app.getUserIDs());
 								choosing = false;
@@ -179,8 +179,8 @@ public class Employee extends User {
 		
 		try {
 			int acctNum = scan.nextInt();
-			System.out.println(BankAccount.retrieve(acctNum));
-			System.out.println("Users: " + BankAccount.retrieveCusts(acctNum));
+			System.out.println(Account.retrieve(acctNum));
+			System.out.println("Users: " + Account.retrieveCusts(acctNum));
 		} catch(NotFoundException e) {
 			System.out.println("Account not found!");
 		}
