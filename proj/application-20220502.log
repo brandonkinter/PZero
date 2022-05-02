@@ -587,3 +587,114 @@
 2022-05-02 06:13:46.191 [JettyServerThreadPool-23] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id19
 2022-05-02 06:13:46.256 [JettyServerThreadPool-23] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id20
 2022-05-02 06:13:46.296 [JettyServerThreadPool-23] INFO  com.revature.dao.AccountDAO - deleted account with id 14
+2022-05-02 06:15:54.608 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-02 06:15:54.651 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-02 06:15:54.689 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-02 06:15:54.726 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:15:54.765 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:15:54.812 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-02 06:15:54.849 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-02 06:15:54.886 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-02 06:16:35.761 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 4
+2022-05-02 06:16:51.677 [main] INFO  com.revature.dao.ApplicationDAO - created application with id 32
+2022-05-02 06:16:51.719 [main] INFO  com.revature.dao.AppJunctionDAO - created app junction
+2022-05-02 06:16:51.796 [main] INFO  com.revature.dao.AppJunctionDAO - created app junction
+2022-05-02 06:16:58.364 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:17:06.163 [main] INFO  com.revature.dao.AccountDAO - updated account with id 1
+2022-05-02 06:17:11.875 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:17:13.206 [main] INFO  com.revature.dao.AccountDAO - updated account with id 1
+2022-05-02 06:17:24.620 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:17:27.620 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:17:29.183 [main] INFO  com.revature.dao.AccountDAO - updated account with id 1
+2022-05-02 06:17:29.228 [main] INFO  com.revature.dao.AccountDAO - updated account with id 4
+2022-05-02 06:17:34.639 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-02 06:17:49.878 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 6
+2022-05-02 06:17:49.915 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
+2022-05-02 06:17:53.832 [main] INFO  com.revature.dao.ApplicationDAO - retrieved all open applications
+2022-05-02 06:17:53.869 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 27
+2022-05-02 06:17:53.906 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 28
+2022-05-02 06:17:53.943 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 29
+2022-05-02 06:17:53.985 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 30
+2022-05-02 06:17:54.023 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 32
+2022-05-02 06:18:07.555 [main] INFO  com.revature.dao.AccountDAO - created acct with acct_id of 15
+2022-05-02 06:18:07.746 [main] INFO  com.revature.dao.AccountJunctionDAO - created acct junction
+2022-05-02 06:18:07.914 [main] INFO  com.revature.dao.ApplicationDAO - updated application with id 27
+2022-05-02 06:18:11.224 [main] INFO  com.revature.dao.ApplicationDAO - updated application with id 28
+2022-05-02 06:18:30.554 [main] INFO  com.revature.dao.ApplicationDAO - retrieved all open applications
+2022-05-02 06:18:30.593 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 29
+2022-05-02 06:18:30.639 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 30
+2022-05-02 06:18:30.676 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 32
+2022-05-02 06:18:34.414 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all applications for customer 2
+2022-05-02 06:18:34.478 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 9
+2022-05-02 06:18:34.521 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 10
+2022-05-02 06:18:34.558 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 11
+2022-05-02 06:18:34.606 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 12
+2022-05-02 06:18:34.643 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 13
+2022-05-02 06:18:34.682 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 17
+2022-05-02 06:18:34.721 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 18
+2022-05-02 06:18:34.762 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 19
+2022-05-02 06:18:34.800 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 23
+2022-05-02 06:18:34.838 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 24
+2022-05-02 06:18:34.877 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 25
+2022-05-02 06:18:34.916 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 26
+2022-05-02 06:18:34.965 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 27
+2022-05-02 06:18:35.026 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 28
+2022-05-02 06:18:35.067 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 29
+2022-05-02 06:18:35.105 [main] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 32
+2022-05-02 06:18:35.146 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 9
+2022-05-02 06:18:35.184 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 10
+2022-05-02 06:18:35.224 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 11
+2022-05-02 06:18:35.268 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 12
+2022-05-02 06:18:35.309 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 13
+2022-05-02 06:18:35.346 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 17
+2022-05-02 06:18:35.384 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 18
+2022-05-02 06:18:35.441 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 19
+2022-05-02 06:18:35.478 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 23
+2022-05-02 06:18:35.517 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 24
+2022-05-02 06:18:35.561 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 25
+2022-05-02 06:18:35.599 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 26
+2022-05-02 06:18:35.650 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 27
+2022-05-02 06:18:35.692 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 28
+2022-05-02 06:18:35.731 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 29
+2022-05-02 06:18:35.806 [main] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 32
+2022-05-02 06:18:41.942 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-02 06:18:41.988 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-02 06:18:42.031 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-02 06:18:42.082 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:18:42.122 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:18:42.170 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-02 06:18:42.207 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-02 06:18:42.250 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-02 06:18:42.287 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 15
+2022-05-02 06:18:47.049 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:18:47.101 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for acct with id 1
+2022-05-02 06:18:53.773 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 6
+2022-05-02 06:19:04.965 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 5
+2022-05-02 06:19:05.051 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-02 06:19:27.461 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-02 06:19:27.499 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
+2022-05-02 06:19:37.985 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-02 06:19:38.024 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-02 06:19:38.063 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 06:19:38.103 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:19:38.148 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-02 06:19:38.195 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-02 06:19:38.241 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-02 06:19:38.286 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 15
+2022-05-02 06:19:49.847 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:19:52.961 [main] INFO  com.revature.dao.AccountDAO - updated account with id 4
+2022-05-02 06:19:58.503 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:19:58.543 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for acct with id 4
+2022-05-02 06:20:06.323 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
+2022-05-02 06:20:13.592 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-02 06:20:13.628 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for acct with id 4
+2022-05-02 06:20:21.187 [main] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id5
+2022-05-02 06:20:21.231 [main] INFO  com.revature.dao.AccountDAO - deleted account with id 4
+2022-05-02 07:24:41.679 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 07:24:41.724 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 07:25:41.395 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 07:25:41.448 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 07:25:56.882 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 07:25:56.927 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 07:26:09.992 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 07:26:10.043 [main] INFO  com.revature.dao.LoginDAO - no login found with username username

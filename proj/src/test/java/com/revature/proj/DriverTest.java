@@ -124,7 +124,7 @@ public class DriverTest {
 				   							  Driver.checkUsername("user"); 
 				   						   });
 		assertTrue(exception.getMessage().equals(
-								"Invalid Username!. Try again.\n"));
+								"\nInvalid Username!. Try again.\n"));
 	}
 	
 	@Test
@@ -158,28 +158,28 @@ public class DriverTest {
 				   							  Driver.checkPassword("P@ssword");
 				   						   });
 		assertTrue(exception.getMessage().equals(
-									"Invalid password! Try again.\n"));
+									"\nInvalid password! Try again.\n"));
 
 		exception = assertThrows(InvalidPasswordException.class, 
 								 () -> {
 									Driver.checkPassword("Passw0rd");
 								 });
 		assertTrue(exception.getMessage().equals(
-									"Invalid password! Try again.\n"));
+									"\nInvalid password! Try again.\n"));
 
 		exception = assertThrows(InvalidPasswordException.class, 
 								 () -> {
 									Driver.checkPassword("p@ssw0rd");
 								 });
 		assertTrue(exception.getMessage().equals(
-									"Invalid password! Try again.\n"));	
+									"\nInvalid password! Try again.\n"));	
 
 		exception = assertThrows(InvalidPasswordException.class, 
 								 () -> {
 									Driver.checkPassword("P@SSW0RD");
 								 });
 		assertTrue(exception.getMessage().equals(
-									"Invalid password! Try again.\n"));
+									"\nInvalid password! Try again.\n"));
 	}
 	
 	@Test
@@ -194,20 +194,20 @@ public class DriverTest {
 				   							  Driver.checkPhoneNum("1");
 				   						   });
 		assertTrue(exception.getMessage().equals(
-									"Invalid phone number! Try again.\n"));
+									"\nInvalid phone number! Try again.\n"));
 
 		exception = assertThrows(InvalidPhoneNumException.class,
 								 () -> {
 									Driver.checkPhoneNum("123456789012");
 								 });
 		assertTrue(exception.getMessage().equals(
-									"Invalid phone number! Try again.\n"));
+									"\nInvalid phone number! Try again.\n"));
 
 		exception = assertThrows(InvalidPhoneNumException.class,
 								 () -> {
 									Driver.checkPhoneNum("abc.def.ghij");
 								 });
 		assertTrue(exception.getMessage().equals(
-									"Invalid phone number! Try again.\n"));
+									"\nInvalid phone number! Try again.\n"));
 	}
 }
