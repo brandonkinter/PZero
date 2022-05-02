@@ -3,7 +3,7 @@ package com.revature.driver;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.revature.controller.AccountController;
+import com.revature.controller.UserController;
 import com.revature.controller.LoginController;
 import com.revature.controller.ApplicationController;
 import com.revature.dao.AccountDAO;
@@ -47,7 +47,7 @@ public class Driver {
 		Javalin app = Javalin.create().start(7070);
 		
 		LoginController loginController = new LoginController(app);
-		AccountController acctController = new AccountController(app);
+		UserController userController = new UserController(app);
 		ApplicationController appController = new ApplicationController(app);
 		
 		Scanner scan = new Scanner(System.in);

@@ -522,3 +522,8 @@
 2022-05-01 23:23:16.769 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id 26
 2022-05-01 23:23:16.814 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id 27
 2022-05-01 23:23:16.859 [JettyServerThreadPool-21] INFO  com.revature.dao.ApplicationDAO - deleted application with id 22
+2022-05-01 23:52:36.022 [JettyServerThreadPool-21] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 23:52:36.060 [JettyServerThreadPool-21] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 23:54:18.651 [JettyServerThreadPool-16] ERROR com.revature.dao.UserDAO - user not found
+2022-05-01 23:58:18.419 [JettyServerThreadPool-19] ERROR com.revature.dao.UserDAO - SQL error while attempting create
+2022-05-01 23:58:18.461 [JettyServerThreadPool-19] ERROR com.revature.dao.PersonalInfoDAO - SQL error while attempting create

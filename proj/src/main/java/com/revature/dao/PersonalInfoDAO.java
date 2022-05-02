@@ -64,11 +64,14 @@ public class PersonalInfoDAO implements DAO<PersonalInfo, Integer, Void> {
 		
 		try {
 			String command = "UPDATE personal_info " +
-							 "SET phone_num = ? " +
+							 "SET first_name = ?, last_name = ?, " + 
+							 	 "phone_num = ? " +
 							 "WHERE user_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
-			st.setLong(1, info.getPhoneNum());
-			st.setInt(2, info.getUserID());
+			st.setString(1, info.getFirstName());
+			st.setString(2, info.getLastName());
+			st.setLong(3, info.getPhoneNum());
+			st.setInt(4, info.getUserID());
 			st.execute();
 			
 			logger.info("successfully updated info for user with id " + 

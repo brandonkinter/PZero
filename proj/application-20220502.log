@@ -1,0 +1,17 @@
+2022-05-02 00:24:22.065 [JettyServerThreadPool-21] INFO  com.revature.dao.LoginDAO - retrieved login of username kinter
+2022-05-02 00:24:22.103 [JettyServerThreadPool-21] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-02 00:24:27.223 [JettyServerThreadPool-18] INFO  com.revature.dao.LoginDAO - retrieved login of username wexler
+2022-05-02 00:24:27.264 [JettyServerThreadPool-18] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 4
+2022-05-02 00:24:32.239 [JettyServerThreadPool-23] INFO  com.revature.dao.LoginDAO - retrieved login of username kinter
+2022-05-02 00:24:32.279 [JettyServerThreadPool-23] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-02 00:26:24.078 [JettyServerThreadPool-29] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 18
+2022-05-02 00:26:24.128 [JettyServerThreadPool-29] INFO  com.revature.dao.UserDAO - created new user with id 18
+2022-05-02 00:26:24.174 [JettyServerThreadPool-29] INFO  com.revature.dao.PersonalInfoDAO - created info entry for user with id 18
+2022-05-02 00:27:22.943 [JettyServerThreadPool-23] INFO  com.revature.dao.PersonalInfoDAO - successfully updated info for user with id 18
+2022-05-02 00:28:07.246 [JettyServerThreadPool-17] INFO  com.revature.dao.PersonalInfoDAO - successfully updated info for user with id 18
+2022-05-02 00:30:44.462 [JettyServerThreadPool-22] INFO  com.revature.dao.PersonalInfoDAO - successfully updated info for user with id 18
+2022-05-02 00:33:30.139 [JettyServerThreadPool-28] INFO  com.revature.dao.LoginDAO - retrieved login of username testpost
+2022-05-02 00:33:30.185 [JettyServerThreadPool-28] INFO  com.revature.dao.UserDAO - retrieved admin with id 18
+2022-05-02 00:33:30.230 [JettyServerThreadPool-28] INFO  com.revature.dao.PersonalInfoDAO - successfully deleted info for user with id 18
+2022-05-02 00:33:30.277 [JettyServerThreadPool-28] INFO  com.revature.dao.UserDAO - deleted user with id 18
+2022-05-02 00:33:30.328 [JettyServerThreadPool-28] INFO  com.revature.dao.LoginDAO - deleted login for username testpost
