@@ -15,3 +15,17 @@
 2022-05-02 00:33:30.230 [JettyServerThreadPool-28] INFO  com.revature.dao.PersonalInfoDAO - successfully deleted info for user with id 18
 2022-05-02 00:33:30.277 [JettyServerThreadPool-28] INFO  com.revature.dao.UserDAO - deleted user with id 18
 2022-05-02 00:33:30.328 [JettyServerThreadPool-28] INFO  com.revature.dao.LoginDAO - deleted login for username testpost
+2022-05-02 01:08:50.269 [JettyServerThreadPool-21] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-02 01:08:50.313 [JettyServerThreadPool-21] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for acct with id 1
+2022-05-02 01:11:03.115 [JettyServerThreadPool-28] INFO  com.revature.dao.AccountDAO - created acct with acct_id of 12
+2022-05-02 01:11:03.164 [JettyServerThreadPool-28] INFO  com.revature.dao.AccountJunctionDAO - created acct junction
+2022-05-02 01:11:03.208 [JettyServerThreadPool-28] INFO  com.revature.dao.AccountJunctionDAO - created acct junction
+2022-05-02 01:11:58.790 [JettyServerThreadPool-17] INFO  com.revature.dao.LoginDAO - no login found with username 2
+2022-05-02 01:12:52.037 [JettyServerThreadPool-22] INFO  com.revature.dao.LoginDAO - retrieved login of username kinter
+2022-05-02 01:12:52.075 [JettyServerThreadPool-22] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-02 01:14:26.671 [JettyServerThreadPool-22] INFO  com.revature.dao.AccountDAO - updated account with id 12
+2022-05-02 01:15:18.261 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountDAO - retrieved account with id 12
+2022-05-02 01:15:18.305 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for acct with id 12
+2022-05-02 01:15:18.343 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id16
+2022-05-02 01:15:18.388 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id17
+2022-05-02 01:15:18.432 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountDAO - deleted account with id 12

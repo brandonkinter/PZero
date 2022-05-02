@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.revature.controller.UserController;
-import com.revature.controller.LoginController;
+import com.revature.controller.AccountController;
 import com.revature.controller.ApplicationController;
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountJunctionDAO;
@@ -46,8 +46,8 @@ public class Driver {
 	public static void main(String[] args) throws InterruptedException {
 		Javalin app = Javalin.create().start(7070);
 		
-		LoginController loginController = new LoginController(app);
 		UserController userController = new UserController(app);
+		AccountController acctController = new AccountController(app);
 		ApplicationController appController = new ApplicationController(app);
 		
 		Scanner scan = new Scanner(System.in);
