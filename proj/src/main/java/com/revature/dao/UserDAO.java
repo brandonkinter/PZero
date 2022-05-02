@@ -4,12 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.revature.models.Account;
 import com.revature.models.Admin;
 import com.revature.models.Customer;
 import com.revature.models.Employee;
@@ -53,7 +51,7 @@ public class UserDAO implements DAO<User, Integer, Void>{
 				switch(role) {
 					case "customer":
 						logger.info("retrieved customer with id " + userID);
-						return new Customer(userID, getAccounts(userID));
+						return new Customer(userID);
 					case "employee":
 						logger.info("retrieved employee with id " + userID);
 						return new Employee(userID);
@@ -108,34 +106,5 @@ public class UserDAO implements DAO<User, Integer, Void>{
 		} // end try-catch 
 		
 	} // end delete()
-	
-	private ArrayList<Account> getAccounts(int userID) {
-		Connection c = ConnectionManager.getConnection();
-		
-		try {
-			String command = "SELECT accounts.acct_num, accounts.balance " +
-						     "FROM accounts " +
-						     "INNER JOIN acct_junctions " +
-						     "USING(acct_num) " +
-						     "WHERE acct_junctions.user_id = ?;";
-			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1, userID);
-			ResultSet rs = st.executeQuery();
-			
-			ArrayList<Account> result = new ArrayList<Account>();
-			
-			while(rs.next()) {
-				result.add(new Account(rs.getInt(1), rs.getLong(2)));
-			} // end while 
-			logger.info("retrieved all accounts for user " + userID);
-			return result;
-			
-		} catch(SQLException e) {
-			logger.error("SQL error while attempting retrieve");
-			e.printStackTrace();
-		} // end try-catch
-		logger.error("no accounts found for user " + userID);
-		return null;
-	} // end getAccounts()
 	
 } // end UserDAO

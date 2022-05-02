@@ -87,6 +87,35 @@ public class AccountJunctionDAO implements DAO<AccountJunction, Integer, Void> {
 		return null;
 	}
 	
+	public ArrayList<AccountJunction> retrieveByUser(Integer userID) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT * " +
+							 "FROM acct_junctions " +
+							 "WHERE user_id = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, userID);
+			ResultSet rs = st.executeQuery();
+			
+			ArrayList<AccountJunction> juncs 
+								= new ArrayList<AccountJunction>();
+			
+			while(rs.next()) {
+				juncs.add(new AccountJunction(rs.getInt(1), 
+											  userID, rs.getInt(3)));
+			}
+			logger.info("retrieved all acct junctions " +
+						"for user with id " + userID);
+			return juncs;
+		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
+			e.printStackTrace();
+		}
+		logger.error("no acct junctions found");
+		return null;
+	}
+	
 	public void update(AccountJunction junction) {
 		Connection c = ConnectionManager.getConnection();
 		

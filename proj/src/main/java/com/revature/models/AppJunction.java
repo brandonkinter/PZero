@@ -1,15 +1,9 @@
 package com.revature.models;
 
-import java.util.ArrayList;
-
-import com.revature.dao.AppJunctionDAO;
-
 public class AppJunction {
 	private int junctionID;
 	private int userID;
 	private int appID;
-	
-	private static AppJunctionDAO appJuncDAO = new AppJunctionDAO();
 	
 	public AppJunction() {
 		this.junctionID = this.userID = this.appID = -1;
@@ -49,9 +43,5 @@ public class AppJunction {
 	
 	public void setAppID(int appID) {
 		this.appID = appID;
-	}
-	
-	public static ArrayList<Integer> retrieveIDsByApp(Integer appID) {
-		return appJuncDAO.retrieveIDsByApp(appID);
 	}
 }

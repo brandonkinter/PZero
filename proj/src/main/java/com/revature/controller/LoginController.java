@@ -14,8 +14,8 @@ public class LoginController {
 		
 		app.get("/logins/{username}", getHandler);
 		app.post("/logins", postHandler);
-		app.put("/users/{username}", putHandler);
-		app.delete("/users/{username}", deleteHandler);
+		app.put("/logins/{username}", putHandler);
+		app.delete("/logins/{username}", deleteHandler);
 	}
 	
 	public Handler getHandler = ctx -> {

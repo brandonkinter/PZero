@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.revature.exceptions.InvalidLoginException;
 import com.revature.models.Login;
 
 public class LoginDAO  implements DAO<Login, String, Integer> {
@@ -125,7 +126,7 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 		
 	} // end delete()
 	
-	public Integer validate(Login login) {
+	public Integer validate(Login login) throws InvalidLoginException {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
@@ -142,13 +143,16 @@ public class LoginDAO  implements DAO<Login, String, Integer> {
 				int id = rs.getInt(1);
 				logger.info("validated login for user with id " + id);
 				return id;
-			} // end if
+			} else {
+				logger.info("no valid login found");
+				throw new InvalidLoginException();
+			}
 			
 		} catch(SQLException e) {
 			logger.error("SQL error while attempting validate");
 			e.printStackTrace();
 		} // end try-catch
-		logger.info("no valid login found");
+		
 		return null;
 	} // end validate()
 	

@@ -60,7 +60,7 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT * " +
+			String command = "SELECT user_id " +
 							 "FROM app_junctions " +
 							 "WHERE app_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
@@ -69,7 +69,7 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			ArrayList<Integer> juncs = new ArrayList<Integer>();
 			
 			while(rs.next()) {
-				juncs.add(rs.getInt(2));
+				juncs.add(rs.getInt(1));
 			}
 			logger.info("retrieved all users for application " + appID);
 			return juncs;

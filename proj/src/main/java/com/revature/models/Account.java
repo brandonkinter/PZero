@@ -1,19 +1,10 @@
 package com.revature.models;
 
-import java.util.ArrayList;
 import java.util.Objects;
-
-import com.revature.dao.AccountDAO;
-import com.revature.dao.AccountJunctionDAO;
-import com.revature.exceptions.NotFoundException;
-import com.revature.exceptions.InvalidAmountException;
-import com.revature.exceptions.NotEnoughFundsException;
 
 public class Account {
 	private int acctNum;
 	private long balance;
-	private static AccountDAO acctDAO = new AccountDAO();
-	private static AccountJunctionDAO acctJuncDAO = new AccountJunctionDAO();
 	
 	public Account() {
 		this.acctNum = -1;
@@ -46,71 +37,6 @@ public class Account {
 		this.balance = balance;
 	}
 	
-	public void create(ArrayList<Integer> userIDs) {
-		int acctNum = acctDAO.create(this);
-		
-		for(Integer userID : userIDs) {
-			acctJuncDAO.create(new AccountJunction(userID, acctNum));
-		}
-	}
-	
-	public static Account retrieve(int acctNum) 
-									throws NotFoundException {
-		Account account = acctDAO.retrieve(acctNum);
-		
-		if(account == null)
-			throw new NotFoundException();
-		
-		return account;
-	}
-	
-	public static ArrayList<Integer> retrieveCusts(int acctNum) 
-												throws NotFoundException {
-		ArrayList<Integer> custs = new ArrayList<Integer>();
-		ArrayList<AccountJunction> juncs = acctJuncDAO.retrieveByAcct(acctNum);
-		
-		if(juncs == null) {
-			throw new NotFoundException();
-		}
-		
-		for(AccountJunction i : juncs) {
-			custs.add(i.getUserID());
-		}
-		
-		return custs;
-	}
-	
-	public void delete() {
-		acctJuncDAO.delete(new AccountJunction(this.acctNum));
-		acctDAO.delete(this);
-	}
-	
-	public void deposit(long amount) throws InvalidAmountException {
-		if(amount <= 0)
-			throw new InvalidAmountException();
-		
-		this.balance += amount;
-		acctDAO.update(this);
-	} // end deposit()
-	
-	public void withdraw(long amount) throws InvalidAmountException,
-											 NotEnoughFundsException {
-		if(amount < 0)
-			throw new InvalidAmountException();
-		else if(this.balance - amount < 0)
-			throw new NotEnoughFundsException();
-		
-		this.balance -= amount;
-		acctDAO.update(this);
-	}
-	
-	public void transfer(long amount, Account dest) 
-											throws InvalidAmountException, 
-												   NotEnoughFundsException {
-		this.withdraw(amount);
-		dest.deposit(amount);
-	}
-	
 	@Override
 	public String toString() {
 		return "acctNum: " + this.acctNum + 
@@ -133,6 +59,5 @@ public class Account {
 		Account other = (Account) obj;
 		return acctNum == other.acctNum && balance == other.balance;
 	}
-	
-	
+
 }

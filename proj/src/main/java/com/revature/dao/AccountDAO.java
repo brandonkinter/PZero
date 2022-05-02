@@ -54,11 +54,12 @@ public class AccountDAO implements DAO<Account, Integer, Integer> {
 				return new Account(acctNum, rs.getLong(2));
 			} // end if
 			
+			logger.error("no account found with id " + acctNum);
+			
 		} catch(SQLException e) {
 			logger.error("SQL error while attempting retrieve");
 			e.printStackTrace();
 		} // end try-catch
-		logger.error("no account found with id " + acctNum);
 		return null;
 	} // end retrieve()
 	
