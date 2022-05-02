@@ -50,15 +50,19 @@ public class PersonalInfo {
 		this.lastName = lastName;
 	}
 	
-	public void setPhoneNume(long phoneNum) {
+	public void setPhoneNum(long phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	
 	@Override
 	public String toString() {
-		return "User ID: " + this.userID + "\n" +
-			   "Name: " + this.lastName + ", " + this.firstName + "\n" +
-			   "Phone Number: " + this.phoneNum;
+		String temp = String.valueOf(this.phoneNum);
+		temp = temp.substring(0, 3) + '.' + temp.substring(3, 6) + 
+			   '.' + temp.substring(6);
+		
+		return "User ID: " + this.userID + "\n\n" +
+			   "Name: " + this.lastName + ", " + this.firstName + "\n\n" +
+			   "Phone Number: " + temp + "\n";
 			   
 	}
 }

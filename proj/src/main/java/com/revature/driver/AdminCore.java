@@ -10,6 +10,7 @@ import com.revature.models.AccountJunction;
 import com.revature.models.Admin;
 import com.revature.models.Customer;
 import com.revature.models.Employee;
+import com.revature.models.PersonalInfo;
 import com.revature.models.User;
 
 public class AdminCore extends EmployeeCore {
@@ -114,14 +115,18 @@ public class AdminCore extends EmployeeCore {
 	
 	private static void employeeSearch(Scanner scan) {
 		System.out.print("Enter a User ID: ");
-			
+		int userID = scan.nextInt();
+		
 		try {
-			User user = userDAO.retrieve(scan.nextInt());
+			User user = userDAO.retrieve(userID);
 				
 			if(!(user instanceof Employee))
 				throw new UserNotFoundException();
-				
-			System.out.println(user + "\n");
+			
+			PersonalInfo info = infoDAO.retrieve(userID);
+			
+			System.out.println(info);
+			System.out.println("Role: " + user.getRole() + "\n");
 				
 		} catch(UserNotFoundException e) {
 			System.out.println(e.getMessage());

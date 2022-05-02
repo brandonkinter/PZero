@@ -12,6 +12,7 @@ import com.revature.models.AccountJunction;
 import com.revature.models.Application;
 import com.revature.models.Customer;
 import com.revature.models.Employee;
+import com.revature.models.PersonalInfo;
 import com.revature.models.User;
 
 public class EmployeeCore extends Driver {
@@ -228,15 +229,20 @@ public class EmployeeCore extends Driver {
 	
 	protected static void customerSearch(Scanner scan) {
 		System.out.print("Enter a User ID: ");
+		int userID = scan.nextInt();
 		
 		try {
-			User user = userDAO.retrieve(scan.nextInt());
+			User user = userDAO.retrieve(userID);
 			
 			if(!(user instanceof Customer))
 				throw new UserNotFoundException();
 			
+			PersonalInfo info = infoDAO.retrieve(userID);
 			loadAccounts((Customer)user);
-			System.out.println(user + "\n");
+			
+			System.out.println("\n" + info);
+			System.out.println(((Customer) user).getAccounts());
+			System.out.println("");
 			
 		} catch(UserNotFoundException e) {
 			System.out.println(e.getMessage());

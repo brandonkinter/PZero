@@ -86,7 +86,9 @@ public class Driver {
 	} // end main()
 	
 	/**
+	 * 
 	 * displays initial startup menu for all users
+	 * 
 	 */
 	private static void displayStartupMenu() {
 		System.out.println("-----Welcome to Revature Bank!-----\n\n");
@@ -106,6 +108,7 @@ public class Driver {
 	 * 
 	 * @param  username
 	 * @throws InvalidUsernameException if username is taken or too short
+	 * 
 	 */
 	private static void checkUsername(String username) 
 										throws InvalidUsernameException,
@@ -124,6 +127,7 @@ public class Driver {
 	 * @param  password
 	 * @throws InvalidPasswordException if password is too short or
 	 * 		   doesn't contain a necessary character
+	 * 
 	 */
 	public static void checkPassword(String password)
 										throws InvalidPasswordException {
@@ -160,6 +164,26 @@ public class Driver {
 		if(!(hasSpecial && hasNum && hasLetter && hasCap))
 			throw new InvalidPasswordException();
 	} // end checkPassword()
+	
+	private static void updatePhoneNumber(Scanner scan, PersonalInfo info) {
+		
+		System.out.print("Enter your new phone number (xxx.xxx.xxxx): ");
+		String phoneNum = scan.next();
+		
+		try {
+			long num = checkPhoneNum(phoneNum);
+			
+			// update personal_info entry in database
+			info.setPhoneNum(num);
+			infoDAO.update(info);
+			
+			System.out.println("Phone number successfully updated!\n");
+			
+		} catch(InvalidPhoneNumException e) {
+			System.out.println(e.getMessage());
+		} // end try-catch
+		
+	} // end updatePhoneNumber()
 	
 	private static void updatePassword(Scanner scan, User user) {
 		Login login = loginDAO.retrieve(user.getID());
@@ -336,9 +360,11 @@ public class Driver {
 	
 	protected static void userProfile(Scanner scan, User user) {
 		int choice = 0;
+		
+		PersonalInfo info = infoDAO.retrieve(user.getID());
 			
-		while(choice != 4) {
-			displayProfile();
+		while(choice != 3) {
+			displayProfile(info);
 			System.out.print("What would you like to do? ");
 			choice = scan.nextInt();
 				
@@ -346,11 +372,10 @@ public class Driver {
 				case 1: // update password
 					updatePassword(scan, user);
 					break;
-				case 2: // update email
+				case 2: // update phone number
+					updatePhoneNumber(scan, info);
 					break;
-				case 3: // update phone number
-					break;
-				case 4: // quit
+				case 3: // quit
 					break;
 				default:
 					System.out.println("Invalid choice! Try again.");
@@ -358,16 +383,12 @@ public class Driver {
 		} // end while
 	} // end userProfile()
 	
-	private static void displayProfile() {
+	private static void displayProfile(PersonalInfo info) {
 		System.out.println("\n-----USER PROFILE-----\n");
-		System.out.println("name: ");
-		System.out.println("username: ");
-		System.out.println("email: ");
-		System.out.println("phone number: \n");
+		System.out.println(info);
 		System.out.println("1. Update password.");
-		System.out.println("2. Update email.");
-		System.out.println("3. Update phone number.");
-		System.out.println("4. Quit.\n");
+		System.out.println("2. Update phone number.");
+		System.out.println("3. Quit.\n");
 	} // end displayProfile()
 	
 	protected static void loadAccounts(Customer cust) {

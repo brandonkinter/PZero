@@ -402,3 +402,89 @@
 2022-05-01 21:05:16.109 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 17
 2022-05-01 21:05:16.155 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 17
 2022-05-01 21:05:16.199 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 17
+2022-05-01 21:32:13.624 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-01 21:32:13.677 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 21:32:13.720 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 21:32:13.756 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 21:32:13.794 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 21:32:13.829 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 21:32:13.868 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 21:32:13.907 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 21:32:17.690 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:33:01.055 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 5
+2022-05-01 21:33:01.094 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:33:04.461 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
+2022-05-01 21:35:39.219 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 6
+2022-05-01 21:35:39.262 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
+2022-05-01 21:35:43.386 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 6
+2022-05-01 21:36:15.991 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-01 21:36:16.039 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 21:36:16.082 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 21:36:16.161 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 21:36:16.203 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 21:36:16.244 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 21:36:16.288 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 21:36:16.331 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 21:36:17.838 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:42:45.678 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-01 21:42:45.717 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 21:42:45.772 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 21:42:45.807 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 21:42:45.849 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 21:42:45.887 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 21:42:45.927 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 21:42:45.963 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 21:42:47.944 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:42:50.133 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:42:55.784 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:43:05.955 [main] ERROR com.revature.dao.PersonalInfoDAO - SQL error while attempting update
+2022-05-01 21:44:00.669 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-01 21:44:00.711 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 21:44:00.755 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 21:44:00.818 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 21:44:00.874 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 21:44:00.919 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 21:44:00.978 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 21:44:01.016 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 21:44:02.719 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:44:04.534 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:44:10.751 [main] INFO  com.revature.dao.PersonalInfoDAO - successfully updated info for user with id 2
+2022-05-01 21:46:59.624 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-01 21:46:59.671 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 21:46:59.716 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 21:46:59.758 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 21:46:59.824 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 21:46:59.863 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 21:46:59.898 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 21:46:59.938 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 21:47:01.503 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:47:10.473 [main] INFO  com.revature.dao.PersonalInfoDAO - successfully updated info for user with id 2
+2022-05-01 21:52:06.039 [main] INFO  com.revature.dao.LoginDAO - no valid login found
+2022-05-01 21:52:13.538 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 6
+2022-05-01 21:52:13.576 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
+2022-05-01 21:52:18.203 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 21:52:18.241 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 2
+2022-05-01 21:52:18.285 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 21:52:18.332 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 21:52:18.372 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 21:52:18.411 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 21:52:18.453 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 21:52:18.491 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 21:55:24.463 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 5
+2022-05-01 21:55:24.514 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:55:33.788 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:55:33.833 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
+2022-05-01 21:55:39.097 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
+2022-05-01 21:55:39.137 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 6
+2022-05-01 21:56:20.855 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 5
+2022-05-01 21:56:20.895 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:56:24.991 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:56:25.032 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
+2022-05-01 21:56:44.375 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
+2022-05-01 21:56:44.420 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 6
+2022-05-01 21:57:21.516 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 5
+2022-05-01 21:57:21.557 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:57:25.989 [main] INFO  com.revature.dao.UserDAO - retrieved admin with id 5
+2022-05-01 21:57:26.029 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
+2022-05-01 21:57:33.483 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
+2022-05-01 21:57:33.522 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 6

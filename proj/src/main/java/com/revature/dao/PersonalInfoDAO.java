@@ -67,7 +67,8 @@ public class PersonalInfoDAO implements DAO<PersonalInfo, Integer, Void> {
 							 "SET phone_num = ? " +
 							 "WHERE user_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1, info.getUserID());
+			st.setLong(1, info.getPhoneNum());
+			st.setInt(2, info.getUserID());
 			st.execute();
 			
 			logger.info("successfully updated info for user with id " + 
