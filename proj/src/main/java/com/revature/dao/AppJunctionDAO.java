@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,6 +52,33 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 			e.printStackTrace();
 		}
 		logger.info("no app junctions found with id " + junctionID);
+		return null;
+	}
+	
+	public ArrayList<AppJunction> retrieveByCust(Integer userID) {
+		Connection c = ConnectionManager.getConnection();
+		
+		try {
+			String command = "SELECT * " +
+							 "FROM app_junctions " +
+							 "WHERE user_id = ?;";
+			PreparedStatement st = c.prepareStatement(command);
+			st.setInt(1, userID);
+			ResultSet rs = st.executeQuery();
+			ArrayList<AppJunction> result = new ArrayList<AppJunction>();
+			
+			while(rs.next()) {
+				result.add(
+						new AppJunction(rs.getInt(1), userID, rs.getInt(3)));
+			}
+			logger.info("retrieved all applications for customer " + userID);
+			return result;
+			
+		} catch(SQLException e) {
+			logger.error("SQL error while attempting retrieve");
+			e.printStackTrace();
+		}
+		logger.error("no applications found for customer " + userID);
 		return null;
 	}
 	

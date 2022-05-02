@@ -187,7 +187,7 @@ public class AdminCore extends EmployeeCore {
 			if(acct == null)
 				throw new AccountNotFoundException();
 			
-			System.out.println(acct + "\n");
+			System.out.println("\n" + acct + "\n");
 			
 			System.out.println("User IDs");
 			System.out.println("--------");
@@ -208,13 +208,13 @@ public class AdminCore extends EmployeeCore {
 					
 					acctDAO.delete(acct);
 					
-					System.out.println("Account successfully canceled!\n");
+					System.out.println("\nAccount successfully canceled!\n");
 					break;
 				case 2: // quit
-					System.out.println("Account not canceled.");
+					System.out.println("\nAccount not canceled.\n");
 					break;
 				default:
-					System.out.println("Invalid choice! Try again.\n");
+					System.out.println("\nInvalid choice! Try again.\n");
 			} // end switch
 			
 		} catch(AccountNotFoundException e) {

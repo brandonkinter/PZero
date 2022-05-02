@@ -66,33 +66,6 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		return null;
 	}
 	
-	public Queue<Application> retrieveByCust(Integer userID) {
-		Connection c = ConnectionManager.getConnection();
-		
-		try {
-			String command = "SELECT * " +
-							 "FROM applications " +
-							 "WHERE user_id = ?;";
-			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1, userID);
-			ResultSet rs = st.executeQuery();
-			Queue<Application> result = new LinkedList<Application>();
-			
-			while(rs.next()) {
-				result.add(new Application(rs.getInt(1), rs.getLong(2), 
-									       rs.getLong(3), rs.getBoolean(4)));
-			}
-			logger.info("retrieved all applications for customer " + userID);
-			return result;
-			
-		} catch(SQLException e) {
-			logger.error("SQL error while attempting retrieve");
-			e.printStackTrace();
-		}
-		logger.error("no applications found for customer " + userID);
-		return null;
-	}
-	
 	public Queue<Application> retrieveAllOpen() {
 		Connection c = ConnectionManager.getConnection();
 		

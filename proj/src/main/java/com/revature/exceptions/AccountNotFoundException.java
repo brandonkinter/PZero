@@ -5,6 +5,6 @@ public class AccountNotFoundException extends Exception {
 
 	
 	public String getMessage() {
-		return "Account not found! Try again.\n";
+		return "\nAccount not found! Try again.\n";
 	}
 }

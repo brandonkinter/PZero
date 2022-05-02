@@ -40,7 +40,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "acctNum: " + this.acctNum + 
-			   " | balance: " + (double)this.balance/100.0;
+			   " | balance: " + String.format("%.2f", this.balance/100.0);
 	}
 
 	@Override

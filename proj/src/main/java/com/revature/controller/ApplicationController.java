@@ -42,7 +42,9 @@ public class ApplicationController {
 	public Handler postHandler = ctx -> {
 		Application app = ctx.bodyAsClass(Application.class);
 		
-		appDAO.create(app);
+		int appID = appDAO.create(app);
+		
+		app.setAppID(appID);
 		
 		for(Integer userID : app.getUserIDs())
 			appJuncDAO.create(new AppJunction(userID, app.getAppID()));

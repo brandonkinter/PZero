@@ -5,6 +5,6 @@ public class InvalidPasswordException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "Invalid password! Try again.\n";
+		return "\nInvalid password! Try again.\n";
 	}
 }

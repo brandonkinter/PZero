@@ -52,6 +52,9 @@ public class Driver {
 		
 		Scanner scan = new Scanner(System.in);
 		
+		for(int i = 0; i < 50; ++i)
+			System.out.println("");
+		
 		int choice = 0;
 		
 		User user;
@@ -430,7 +433,7 @@ public class Driver {
 			System.out.print("How much would you like to deposit? ");
 			long amount = (long)(scan.nextDouble() * 100);
 			
-			if(amount < 0)
+			if(amount <= 0)
 				throw new InvalidAmountException();
 			
 			// updates balance in user's ArrayList
@@ -441,7 +444,7 @@ public class Driver {
 			acct.setBalance(acct.getBalance() + amount);
 			acctDAO.update(acct);
 			
-			System.out.println("Deposit successful!\n");
+			System.out.println("\nDeposit successful!\n");
 			
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -468,7 +471,7 @@ public class Driver {
 			System.out.print("How much would you like to withdraw? ");
 			long amount = (long)(scan.nextDouble() * 100);
 			
-			if(amount < 0)
+			if(amount <= 0)
 				throw new InvalidAmountException();
 			
 			if(acct.getBalance() - amount < 0)
@@ -482,7 +485,7 @@ public class Driver {
 			acct.setBalance(acct.getBalance() - amount);
 			acctDAO.update(acct);
 			
-			System.out.println("Withdraw successful!\n");
+			System.out.println("\nWithdraw successful!\n");
 			
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -519,7 +522,7 @@ public class Driver {
 			System.out.print("How much would you like to transfer? ");
 			long amount = (long)(scan.nextDouble() * 100);
 			
-			if(amount < 0)
+			if(amount <= 0)
 				throw new InvalidAmountException();
 			
 			if(sourceAcct.getBalance() - amount < 0)
@@ -543,7 +546,7 @@ public class Driver {
 			destAcct.setBalance(destAcct.getBalance() + amount);
 			acctDAO.update(destAcct);
 			
-			System.out.println("Transfer successful!\n");
+			System.out.println("\nTransfer successful!\n");
 			
 		} catch(Exception e) {
 			System.out.println(e.getMessage());

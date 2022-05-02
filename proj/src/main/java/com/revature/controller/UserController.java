@@ -48,6 +48,8 @@ public class UserController {
 	
 		int userID = loginDAO.create(login);
 		
+		info.setUserID(userID);
+		
 		User user = null;
 		
 		switch(role) {

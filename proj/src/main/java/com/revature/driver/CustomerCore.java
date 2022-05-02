@@ -83,6 +83,7 @@ public class CustomerCore extends Driver {
 			
 			System.out.println("1. Individual.");
 			System.out.println("2. Joint.");
+			System.out.print("Choice: ");
 			
 			switch(scan.nextInt()) {
 			
@@ -91,6 +92,7 @@ public class CustomerCore extends Driver {
 					System.out.print("How many are applying, ");
 					System.out.print("including yourself? ");
 					int numPpl = scan.nextInt();
+					System.out.println("");
 					System.out.print("Please enter each user's User ID. ");
 					System.out.println("Do not include your own.");
 					

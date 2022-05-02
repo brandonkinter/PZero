@@ -66,7 +66,6 @@ public class DriverTest {
 	
 	@Test
 	public void testDisplayProfile() {
-		Customer cust = new Customer(1);
 		PersonalInfo info = new PersonalInfo(1, "first", "last", 1111111111);
 		
 		Driver.displayProfile(info);

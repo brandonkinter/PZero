@@ -22,6 +22,7 @@ public class EmployeeCore extends Driver {
 	 * displays all options available to employees
 	 */
 	private static void displayEmployeeOptions() {
+		System.out.println("");
 		System.out.println("1. Process applications.");
 		System.out.println("2. Search for applications.");
 		System.out.println("3. Search for customers.");
@@ -85,12 +86,12 @@ public class EmployeeCore extends Driver {
 		} // end for
 		
 		if(apps.isEmpty())
-			System.out.println("There are no open application!\n");
+			System.out.println("\nThere are no open application!\n");
 		else {
 			if(apps.size() == 1)
-				System.out.println("There is one open application.\n");
+				System.out.println("\nThere is one open application.\n");
 			else {
-				System.out.print("There are " + apps.size());
+				System.out.print("\nThere are " + apps.size());
 				System.out.println(" open applications.\n");
 			} // end if-else
 			
@@ -111,13 +112,13 @@ public class EmployeeCore extends Driver {
 						choosing = false;
 						break;
 					default:
-						System.out.println("Invalid choice! Try again.\n");
+						System.out.println("\nInvalid choice! Try again.\n");
 				} // end switch
 				
 				if(apps.isEmpty()) {
-					System.out.println("No more applications!\n");
+					System.out.println("\nNo more applications!\n");
 				} else if(choosing) {
-					System.out.println("View another application? ");
+					System.out.println("\nView another application? ");
 					System.out.println("1. Yes");
 					System.out.println("2. No\n");
 				} // end if-else
@@ -160,14 +161,30 @@ public class EmployeeCore extends Driver {
 			switch(choice) {
 				case 1: // search apps by customer
 					System.out.print("Enter a User ID: ");
-					
+					int id = scan.nextInt();
 					try {
-						Queue<Application> apps 
-									= appDAO.retrieveByCust(scan.nextInt());
-						if(apps.isEmpty())
+						ArrayList<AppJunction> juncs
+										= appJuncDAO.retrieveByCust(id);
+						ArrayList<Application> apps 
+										= new ArrayList<Application>();
+						
+						if(juncs.isEmpty())
 							throw new AppNotFoundException();
-							
-						System.out.println(apps);
+						
+						for(AppJunction junc : juncs)
+							apps.add(appDAO.retrieve(junc.getAppID()));
+						
+						for(Application app : apps) {
+							juncs = appJuncDAO.retrieveByApp(app.getAppID());
+							ArrayList<Integer> userIDs 
+												= new ArrayList<Integer>();
+							for(AppJunction junc : juncs)
+								userIDs.add(junc.getUserID());
+							app.setUserIDs(userIDs);
+							System.out.println(app);
+						}
+						
+						
 						
 					} catch(AppNotFoundException e) {
 						System.out.println(e.getMessage());
@@ -183,6 +200,17 @@ public class EmployeeCore extends Driver {
 						if(app == null)
 							throw new AppNotFoundException();
 						
+						ArrayList<AppJunction> juncs
+									= appJuncDAO.retrieveByApp(app.getAppID());
+						
+						ArrayList<Integer> userIDs = new ArrayList<Integer>();
+						
+						for(AppJunction junc : juncs) {
+							userIDs.add(junc.getUserID());
+						}
+						
+						app.setUserIDs(userIDs);
+						
 						System.out.println(app);
 					} catch(AppNotFoundException e) {
 						System.out.println(e.getMessage());
@@ -195,6 +223,19 @@ public class EmployeeCore extends Driver {
 						
 						if(apps.isEmpty())
 							throw new AppNotFoundException();
+						
+						for(Application app : apps) {
+							ArrayList<AppJunction> juncs 
+									= appJuncDAO.retrieveByApp(app.getAppID());
+							
+							ArrayList<Integer> userIDs
+									= new ArrayList<Integer>();
+							
+							for(AppJunction junc : juncs)
+								userIDs.add(junc.getUserID());
+							
+							app.setUserIDs(userIDs);
+						}
 						
 						System.out.println(apps);
 					} catch(AppNotFoundException e) {
@@ -209,6 +250,19 @@ public class EmployeeCore extends Driver {
 						if(apps.isEmpty())
 							throw new AppNotFoundException();
 						
+						for(Application app : apps) {
+							ArrayList<AppJunction> juncs 
+									= appJuncDAO.retrieveByApp(app.getAppID());
+							
+							ArrayList<Integer> userIDs
+									= new ArrayList<Integer>();
+							
+							for(AppJunction junc : juncs)
+								userIDs.add(junc.getUserID());
+							
+							app.setUserIDs(userIDs);
+						}
+						
 						System.out.println(apps);
 					} catch(AppNotFoundException e) {
 						System.out.println(e.getMessage());
@@ -221,6 +275,19 @@ public class EmployeeCore extends Driver {
 						
 						if(apps.isEmpty())
 							throw new AppNotFoundException();
+						
+						for(Application app : apps) {
+							ArrayList<AppJunction> juncs 
+									= appJuncDAO.retrieveByApp(app.getAppID());
+							
+							ArrayList<Integer> userIDs
+									= new ArrayList<Integer>();
+							
+							for(AppJunction junc : juncs)
+								userIDs.add(junc.getUserID());
+							
+							app.setUserIDs(userIDs);
+						}
 						
 						System.out.println(apps);
 					} catch(AppNotFoundException e) {
@@ -251,7 +318,10 @@ public class EmployeeCore extends Driver {
 			loadAccounts((Customer)user);
 			
 			System.out.println("\n" + info);
-			System.out.println(((Customer) user).getAccounts());
+			
+			ArrayList<Account> accts = ((Customer)user).getAccounts();
+			for(Account acct : accts)
+				System.out.println(acct);
 			System.out.println("");
 			
 		} catch(UserNotFoundException e) {
@@ -271,7 +341,7 @@ public class EmployeeCore extends Driver {
 			
 			ArrayList<AccountJunction> juncs 
 								= acctJuncDAO.retrieveByAcct(acctNum);
-			System.out.println(acct);
+			System.out.println("\n" + acct + "\n");
 			System.out.print("Users: " + juncs.get(0).getUserID());
 			juncs.remove(0);
 			for(AccountJunction junc : juncs) 
@@ -295,7 +365,7 @@ public class EmployeeCore extends Driver {
 	} // end displayAppSearchMenu()
 	
 	private static void displayProcessOptions() {
-		System.out.println("---OPTIONS---\n");
+		System.out.println("\n---OPTIONS---\n");
 		System.out.println("1. Approve.");
 		System.out.println("2. Deny.");
 		System.out.println("3. Review later.\n");
