@@ -367,3 +367,38 @@
 2022-05-01 19:46:12.841 [main] INFO  com.revature.dao.AccountDAO - deleted account with id 11
 2022-05-01 19:46:29.368 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
 2022-05-01 19:46:29.404 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for acct with id 9
+2022-05-01 20:53:34.652 [main] INFO  com.revature.dao.LoginDAO - no valid login found
+2022-05-01 20:53:39.332 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 2
+2022-05-01 20:53:39.377 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 2
+2022-05-01 20:53:39.440 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 2
+2022-05-01 20:53:39.481 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 1
+2022-05-01 20:53:39.554 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 4
+2022-05-01 20:53:39.602 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 5
+2022-05-01 20:53:39.651 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 6
+2022-05-01 20:53:39.694 [main] INFO  com.revature.dao.AccountDAO - retrieved account with id 9
+2022-05-01 20:53:55.350 [main] INFO  com.revature.dao.LoginDAO - no login found with username pinkman
+2022-05-01 20:54:01.478 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 11
+2022-05-01 20:54:01.544 [main] INFO  com.revature.dao.UserDAO - created new user with id 11
+2022-05-01 20:55:06.200 [main] INFO  com.revature.dao.LoginDAO - retrieved login of username pinkman
+2022-05-01 20:55:45.570 [main] INFO  com.revature.dao.LoginDAO - no login found with username wwhite
+2022-05-01 20:55:51.181 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 12
+2022-05-01 20:55:51.241 [main] INFO  com.revature.dao.UserDAO - created new user with id 12
+2022-05-01 20:59:30.952 [main] INFO  com.revature.dao.LoginDAO - no login found with username testman
+2022-05-01 20:59:34.945 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 13
+2022-05-01 20:59:34.989 [main] INFO  com.revature.dao.UserDAO - created new user with id 13
+2022-05-01 21:01:09.201 [main] INFO  com.revature.dao.LoginDAO - no login found with username testwoman
+2022-05-01 21:01:13.608 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 14
+2022-05-01 21:01:13.649 [main] INFO  com.revature.dao.UserDAO - created new user with id 14
+2022-05-01 21:01:54.461 [main] INFO  com.revature.dao.LoginDAO - no login found with username testperson
+2022-05-01 21:01:56.710 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 15
+2022-05-01 21:01:56.761 [main] INFO  com.revature.dao.UserDAO - created new user with id 15
+2022-05-01 21:03:38.932 [main] INFO  com.revature.dao.LoginDAO - no login found with username testbug
+2022-05-01 21:03:41.016 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 16
+2022-05-01 21:03:41.064 [main] INFO  com.revature.dao.UserDAO - created new user with id 16
+2022-05-01 21:04:38.218 [main] INFO  com.revature.dao.LoginDAO - no login found with username testbuggy
+2022-05-01 21:04:41.196 [main] INFO  com.revature.dao.LoginDAO - create login success, generated userID of 17
+2022-05-01 21:04:41.243 [main] INFO  com.revature.dao.UserDAO - created new user with id 17
+2022-05-01 21:05:06.835 [main] INFO  com.revature.dao.PersonalInfoDAO - created info entry for user with id 17
+2022-05-01 21:05:16.109 [main] INFO  com.revature.dao.LoginDAO - validated login for user with id 17
+2022-05-01 21:05:16.155 [main] INFO  com.revature.dao.UserDAO - retrieved customer with id 17
+2022-05-01 21:05:16.199 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 17

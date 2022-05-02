@@ -11,11 +11,13 @@ import com.revature.dao.AccountJunctionDAO;
 import com.revature.dao.AppJunctionDAO;
 import com.revature.dao.ApplicationDAO;
 import com.revature.dao.LoginDAO;
+import com.revature.dao.PersonalInfoDAO;
 import com.revature.dao.UserDAO;
 import com.revature.exceptions.AccountNotFoundException;
 import com.revature.exceptions.InvalidAmountException;
 import com.revature.exceptions.InvalidLoginException;
 import com.revature.exceptions.InvalidPasswordException;
+import com.revature.exceptions.InvalidPhoneNumException;
 import com.revature.exceptions.InvalidUsernameException;
 import com.revature.exceptions.NotEnoughFundsException;
 import com.revature.exceptions.UsernameTakenException;
@@ -25,6 +27,7 @@ import com.revature.models.Admin;
 import com.revature.models.Customer;
 import com.revature.models.Employee;
 import com.revature.models.Login;
+import com.revature.models.PersonalInfo;
 import com.revature.models.User;
 
 import io.javalin.Javalin;
@@ -37,12 +40,13 @@ public class Driver {
 	protected static AccountJunctionDAO acctJuncDAO = new AccountJunctionDAO();
 	protected static ApplicationDAO appDAO = new ApplicationDAO();
 	protected static AppJunctionDAO appJuncDAO = new AppJunctionDAO();
+	protected static PersonalInfoDAO infoDAO = new PersonalInfoDAO();
 	
-	Javalin app = Javalin.create().start(7070);
+	/*Javalin app = Javalin.create().start(7070);
 	
 	UserController userController = new UserController(app);
 	AccountController acctController = new AccountController(app);
-	LoginController loginController = new LoginController(app);
+	LoginController loginController = new LoginController(app);*/
    
 	public static void main(String[] args) throws InterruptedException {
 		Scanner scan = new Scanner(System.in);
@@ -121,7 +125,7 @@ public class Driver {
 	 * @throws InvalidPasswordException if password is too short or
 	 * 		   doesn't contain a necessary character
 	 */
-	protected static void checkPassword(String password)
+	public static void checkPassword(String password)
 										throws InvalidPasswordException {
 		// strings to check against
 		String special = "!?3$&^@+",
@@ -198,7 +202,7 @@ public class Driver {
 	 */
 	private static void signup(Scanner scan) {
 		
-		String username, password;
+		String username, password, firstName, lastName, phoneNum;
 		
 		// loops until valid username and password are entered
 		while(true) {
@@ -233,14 +237,66 @@ public class Driver {
 		
 		// username and password are valid, so create entries
 		Login login = new Login(username, password);
+		int userID = loginDAO.create(login);
 		// creates login entry in database, stores userID in new Customer
-		Customer cust = new Customer(loginDAO.create(login));
+		Customer cust = new Customer(userID);
 		// creates customer entry in database
 		userDAO.create(cust);
+		
+			System.out.println("");
+			
+			System.out.print("Enter your first name: ");
+			firstName = scan.next();
+			
+			System.out.print("Enter your last name: ");
+			lastName = scan.next();
+			
+		while(true) {
+			try {
+				System.out.print("Enter your phone number (xxx.xxx.xxxx): ");
+				phoneNum = scan.next();
+				
+				long num = checkPhoneNum(phoneNum);
+			
+				PersonalInfo info 
+						= new PersonalInfo(userID, firstName, lastName, num);
+				infoDAO.create(info);
+				
+				break;
+			} catch(InvalidPhoneNumException e) {
+				System.out.println(e.getMessage());
+			}
+		} // end while
 		
 		System.out.println("User account successfully created!");
 		System.out.println("Please log in with your credentials.\n");
 	} // end signup()
+	
+	public static long checkPhoneNum(String phoneNum) 
+									throws InvalidPhoneNumException {
+		String nums = "0123456789",
+			   temp = "";
+		
+		if(phoneNum.length() != 12)
+			throw new InvalidPhoneNumException();
+		
+		for(int i = 0; i < 12; ++i) {
+			char c = phoneNum.charAt(i);
+			if(i == 3 || i == 7) {
+				if(c != '.')
+					throw new InvalidPhoneNumException();
+			} else if(nums.indexOf(c) < 0){
+				throw new InvalidPhoneNumException();
+			} // end if-else
+		} // end for
+		
+		temp += phoneNum.substring(0, 3);
+		temp += phoneNum.substring(4, 7);
+		temp += phoneNum.substring(8);
+		
+		return Long.parseLong(temp);
+		
+	} // end checkPhoneNum()
 	
 	/**
 	 * 

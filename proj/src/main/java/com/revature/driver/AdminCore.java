@@ -34,7 +34,6 @@ public class AdminCore extends EmployeeCore {
 	 * @param scan
 	 * @param admin
 	 */
-	
 	public static void options(Scanner scan, Admin admin) {
 		int choice = 0;
 		
