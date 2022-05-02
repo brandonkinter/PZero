@@ -56,20 +56,21 @@ public class AppJunctionDAO implements DAO<AppJunction, Integer, Void> {
 		return null;
 	}
 	
-	public ArrayList<Integer> retrieveIDsByApp(Integer appID) {
+	public ArrayList<AppJunction> retrieveByApp(Integer appID) {
 		Connection c = ConnectionManager.getConnection();
 		
 		try {
-			String command = "SELECT user_id " +
+			String command = "SELECT * " +
 							 "FROM app_junctions " +
 							 "WHERE app_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
 			st.setInt(1, appID);
 			ResultSet rs = st.executeQuery();
-			ArrayList<Integer> juncs = new ArrayList<Integer>();
+			ArrayList<AppJunction> juncs = new ArrayList<AppJunction>();
 			
 			while(rs.next()) {
-				juncs.add(rs.getInt(1));
+				juncs.add(new AppJunction(
+						rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 			}
 			logger.info("retrieved all users for application " + appID);
 			return juncs;

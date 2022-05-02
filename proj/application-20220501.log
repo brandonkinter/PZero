@@ -488,3 +488,37 @@
 2022-05-01 21:57:26.029 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 5
 2022-05-01 21:57:33.483 [main] INFO  com.revature.dao.UserDAO - retrieved employee with id 6
 2022-05-01 21:57:33.522 [main] INFO  com.revature.dao.PersonalInfoDAO - retrieved info for user with id 6
+2022-05-01 22:53:55.705 [JettyServerThreadPool-21] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 19
+2022-05-01 22:53:55.746 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 19
+2022-05-01 22:58:59.281 [JettyServerThreadPool-17] INFO  com.revature.dao.ApplicationDAO - closed application with id 19
+2022-05-01 23:01:37.075 [JettyServerThreadPool-22] INFO  com.revature.dao.ApplicationDAO - updated application with id 19
+2022-05-01 23:01:53.527 [JettyServerThreadPool-18] INFO  com.revature.dao.ApplicationDAO - updated application with id 19
+2022-05-01 23:02:57.083 [JettyServerThreadPool-16] INFO  com.revature.dao.ApplicationDAO - created application with id 20
+2022-05-01 23:02:57.128 [JettyServerThreadPool-16] INFO  com.revature.dao.AppJunctionDAO - created app junction
+2022-05-01 23:02:57.168 [JettyServerThreadPool-16] INFO  com.revature.dao.AppJunctionDAO - created app junction
+2022-05-01 23:03:50.589 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id -1
+2022-05-01 23:03:50.626 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id -1
+2022-05-01 23:03:50.678 [JettyServerThreadPool-21] ERROR com.revature.dao.ApplicationDAO - SQL error while attempting delete
+2022-05-01 23:05:50.733 [JettyServerThreadPool-28] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id -1
+2022-05-01 23:05:50.769 [JettyServerThreadPool-28] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id -1
+2022-05-01 23:05:50.805 [JettyServerThreadPool-28] ERROR com.revature.dao.ApplicationDAO - SQL error while attempting delete
+2022-05-01 23:06:39.530 [JettyServerThreadPool-22] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id -1
+2022-05-01 23:06:39.577 [JettyServerThreadPool-22] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id -1
+2022-05-01 23:06:39.638 [JettyServerThreadPool-22] ERROR com.revature.dao.ApplicationDAO - SQL error while attempting delete
+2022-05-01 23:20:10.199 [JettyServerThreadPool-22] INFO  com.revature.dao.ApplicationDAO - retrieved application with id 19
+2022-05-01 23:20:10.238 [JettyServerThreadPool-22] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 19
+2022-05-01 23:20:25.259 [JettyServerThreadPool-16] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 20
+2022-05-01 23:20:25.300 [JettyServerThreadPool-16] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id 22
+2022-05-01 23:20:25.342 [JettyServerThreadPool-16] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id 23
+2022-05-01 23:20:25.383 [JettyServerThreadPool-16] INFO  com.revature.dao.ApplicationDAO - deleted application with id 20
+2022-05-01 23:20:46.401 [JettyServerThreadPool-23] INFO  com.revature.dao.ApplicationDAO - created application with id 21
+2022-05-01 23:20:46.461 [JettyServerThreadPool-23] ERROR com.revature.dao.AppJunctionDAO - SQL error while attempting create
+2022-05-01 23:20:46.509 [JettyServerThreadPool-23] ERROR com.revature.dao.AppJunctionDAO - SQL error while attempting create
+2022-05-01 23:22:12.520 [JettyServerThreadPool-28] INFO  com.revature.dao.ApplicationDAO - created application with id 22
+2022-05-01 23:22:12.568 [JettyServerThreadPool-28] INFO  com.revature.dao.AppJunctionDAO - created app junction
+2022-05-01 23:22:12.609 [JettyServerThreadPool-28] INFO  com.revature.dao.AppJunctionDAO - created app junction
+2022-05-01 23:23:04.446 [JettyServerThreadPool-16] INFO  com.revature.dao.ApplicationDAO - updated application with id 22
+2022-05-01 23:23:16.728 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - retrieved all users for application 22
+2022-05-01 23:23:16.769 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id 26
+2022-05-01 23:23:16.814 [JettyServerThreadPool-21] INFO  com.revature.dao.AppJunctionDAO - deleted app junction with id 27
+2022-05-01 23:23:16.859 [JettyServerThreadPool-21] INFO  com.revature.dao.ApplicationDAO - deleted application with id 22

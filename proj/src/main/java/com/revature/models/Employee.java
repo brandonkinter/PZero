@@ -9,9 +9,4 @@ public class Employee extends User {
 		super(userID);
 		this.setRole("employee");
 	}
-	
-	@Override
-	public String toString() {
-		return "I am an employee.";
-	}
 }

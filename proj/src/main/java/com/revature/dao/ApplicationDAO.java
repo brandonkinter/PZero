@@ -172,12 +172,13 @@ public class ApplicationDAO implements DAO<Application, Integer, Integer> {
 		
 		try {
 			String command = "UPDATE applications " +
-							 "SET is_open = FALSE " + 
+							 "SET is_open = ? " + 
 							 "WHERE app_id = ?;";
 			PreparedStatement st = c.prepareStatement(command);
-			st.setInt(1, app.getAppID());
+			st.setBoolean(1, app.getIsOpen());
+			st.setInt(2, app.getAppID());
 			st.execute();
-			logger.info("closed application with id " + app.getAppID());
+			logger.info("updated application with id " + app.getAppID());
 		} catch(SQLException e) {
 			logger.error("SQL error while attempting update");
 			e.printStackTrace();

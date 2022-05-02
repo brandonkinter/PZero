@@ -9,6 +9,7 @@ import com.revature.exceptions.AppNotFoundException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Account;
 import com.revature.models.AccountJunction;
+import com.revature.models.AppJunction;
 import com.revature.models.Application;
 import com.revature.models.Customer;
 import com.revature.models.Employee;
@@ -72,8 +73,16 @@ public class EmployeeCore extends Driver {
 		boolean choosing = true;
 		Queue<Application> apps = appDAO.retrieveAllOpen();
 		
-		for(Application app : apps)
-			app.setUserIDs(appJuncDAO.retrieveIDsByApp(app.getAppID()));
+		for(Application app : apps) {
+			ArrayList<AppJunction> juncs 
+								= appJuncDAO.retrieveByApp(app.getAppID());
+			ArrayList<Integer> userIDs = new ArrayList<Integer>();
+			
+			for(AppJunction junc : juncs)
+				userIDs.add(junc.getUserID());
+			
+			app.setUserIDs(userIDs);
+		} // end for
 		
 		if(apps.isEmpty())
 			System.out.println("There are no open application!\n");
@@ -130,6 +139,7 @@ public class EmployeeCore extends Driver {
 				
 			case 2: // deny application
 				// closes application
+				app.setIsOpen(false);
 				appDAO.update(app);
 				break;
 			case 3: // choose later

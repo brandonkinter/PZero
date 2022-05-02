@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import com.revature.controller.AccountController;
 import com.revature.controller.LoginController;
-import com.revature.controller.UserController;
+import com.revature.controller.ApplicationController;
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountJunctionDAO;
 import com.revature.dao.AppJunctionDAO;
@@ -41,14 +41,15 @@ public class Driver {
 	protected static ApplicationDAO appDAO = new ApplicationDAO();
 	protected static AppJunctionDAO appJuncDAO = new AppJunctionDAO();
 	protected static PersonalInfoDAO infoDAO = new PersonalInfoDAO();
-	
-	/*Javalin app = Javalin.create().start(7070);
-	
-	UserController userController = new UserController(app);
-	AccountController acctController = new AccountController(app);
-	LoginController loginController = new LoginController(app);*/
    
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws InterruptedException {
+		Javalin app = Javalin.create().start(7070);
+		
+		LoginController loginController = new LoginController(app);
+		AccountController acctController = new AccountController(app);
+		ApplicationController appController = new ApplicationController(app);
+		
 		Scanner scan = new Scanner(System.in);
 		
 		int choice = 0;
@@ -67,11 +68,14 @@ public class Driver {
 					
 					if(user instanceof Customer) { // if customer
 						CustomerCore.options(scan, (Customer)user);
+						
 					} else if(user instanceof Admin) { // if admin
 						AdminCore.options(scan, (Admin)user);
+						
 					} else { // if employee
 						EmployeeCore.options(scan, (Employee)user);
-					}
+						
+					} // end if-else
 					
 					break;
 				case 3: // quit
