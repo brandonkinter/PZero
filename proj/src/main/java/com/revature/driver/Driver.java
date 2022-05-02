@@ -114,7 +114,7 @@ public class Driver {
 	 * @throws InvalidUsernameException if username is taken or too short
 	 * 
 	 */
-	private static void checkUsername(String username) 
+	public static void checkUsername(String username) 
 										throws InvalidUsernameException,
 											   UsernameTakenException {
 		if(username.length() < 6)
@@ -350,7 +350,10 @@ public class Driver {
 			Login login = new Login(username, password);
 			
 			try {
-				int userID = loginDAO.validate(login);
+				Integer userID = loginDAO.validate(login);
+				
+				if(userID == null)
+					throw new InvalidLoginException();
 				
 				System.out.println("\nLogin successful!\n");
 				
@@ -387,7 +390,7 @@ public class Driver {
 		} // end while
 	} // end userProfile()
 	
-	private static void displayProfile(PersonalInfo info) {
+	public static void displayProfile(PersonalInfo info) {
 		System.out.println("\n-----USER PROFILE-----\n");
 		System.out.println(info);
 		System.out.println("1. Update password.");
@@ -395,7 +398,7 @@ public class Driver {
 		System.out.println("3. Quit.\n");
 	} // end displayProfile()
 	
-	protected static void loadAccounts(Customer cust) {
+	public static void loadAccounts(Customer cust) {
 		ArrayList<Account> accounts = new ArrayList<Account>();
 		
 		ArrayList<AccountJunction> juncs 
@@ -548,10 +551,10 @@ public class Driver {
 		
 	} // end transfer()
 	
-	protected static void displayAccounts(Customer cust) {
+	public static void displayAccounts(Customer cust) {
 		ArrayList<Account> accounts = cust.getAccounts();
 		
-		if(accounts.isEmpty()) {
+		if(accounts == null || accounts.isEmpty()) {
 			System.out.println("You don't have any accounts with us yet!");
 			System.out.println("Press '1' below to apply for an account!");
 		} else {

@@ -113,7 +113,7 @@ public class AdminCore extends EmployeeCore {
 		System.out.print("What would you like to do? ");
 	} // end displayTransactionsMenu()
 	
-	private static void employeeSearch(Scanner scan) {
+	public static void employeeSearch(Scanner scan) {
 		System.out.print("Enter a User ID: ");
 		int userID = scan.nextInt();
 		

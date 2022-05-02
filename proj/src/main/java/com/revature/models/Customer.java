@@ -13,6 +13,7 @@ public class Customer extends User {
 	
 	public Customer(int userID) {
 		super(userID, "customer");
+		accounts = new ArrayList<Account>();
 	}
 	
 	public Customer(int userID, ArrayList<Account> accounts) {

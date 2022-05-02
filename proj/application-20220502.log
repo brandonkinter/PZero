@@ -29,3 +29,100 @@
 2022-05-02 01:15:18.343 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id16
 2022-05-02 01:15:18.388 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountJunctionDAO - deleted acct junction with id17
 2022-05-02 01:15:18.432 [JettyServerThreadPool-20] INFO  com.revature.dao.AccountDAO - deleted account with id 12
+2022-05-02 01:45:30.291 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 01:49:00.422 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 01:52:45.150 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 01:52:45.188 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 01:53:47.692 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 01:59:00.958 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 01:59:01.033 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:03:09.854 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:03:09.894 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 02:03:37.289 [main] INFO  com.revature.dao.LoginDAO - retrieved login of username kinter
+2022-05-02 02:04:19.912 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:06:04.091 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:06:04.158 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 02:25:13.314 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:25:13.397 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 02:25:13.440 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 02:31:39.325 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:31:39.366 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 02:31:39.410 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 02:31:55.615 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 02:31:55.685 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 02:31:55.745 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:06:32.112 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:06:32.196 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:06:32.285 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:07:19.360 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:07:19.405 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:07:19.454 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:09:36.904 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:09:36.950 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:09:36.999 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:14:31.752 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:14:31.794 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:14:31.843 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:18:30.427 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:18:30.470 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:18:30.516 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:19:34.036 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:19:34.084 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:19:34.137 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:20:30.699 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:20:30.753 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:20:30.799 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:20:53.060 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:20:53.111 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:20:53.187 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:22:10.868 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:22:10.911 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:22:10.952 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:22:54.813 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:22:54.859 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:22:54.906 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:23:43.485 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:23:43.523 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:23:43.566 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:29:39.515 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:29:39.555 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:29:39.612 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:31:20.803 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:31:20.845 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:32:03.714 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:32:03.754 [main] INFO  com.revature.dao.LoginDAO - no login found with username userName
+2022-05-02 03:32:03.800 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:32:37.693 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:32:37.776 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:32:37.879 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:33:39.913 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:33:39.970 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:33:40.020 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:34:05.774 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:34:05.869 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:36:26.860 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:36:26.899 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:36:26.940 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:38:29.610 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:38:29.658 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:38:29.768 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:39:30.312 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:39:30.356 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:39:30.403 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:41:10.599 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:41:10.640 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:41:10.684 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:43:04.428 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:43:04.469 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:43:04.523 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:43:28.422 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:43:28.462 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:43:28.506 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:44:30.637 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:44:30.684 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:47:57.090 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:47:57.133 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:49:29.390 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:49:29.447 [main] INFO  com.revature.dao.LoginDAO - no login found with username username
+2022-05-02 03:51:21.966 [main] INFO  com.revature.dao.AccountJunctionDAO - retrieved all acct junctions for user with id 1
+2022-05-02 03:51:22.010 [main] INFO  com.revature.dao.LoginDAO - no login found with username username

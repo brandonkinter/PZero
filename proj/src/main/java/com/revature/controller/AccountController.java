@@ -37,7 +37,6 @@ public class AccountController {
 		}
 		
 		ctx.json(acct);
-		ctx.json(users);
 	};
 	
 	@SuppressWarnings("unchecked")
